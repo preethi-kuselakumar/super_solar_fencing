@@ -1,104 +1,160 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, ShieldCheck, Zap, Sun, Shield } from "lucide-react";
 import { SectionWrapper } from "@/components/SectionWrapper";
 import { productData } from "@/lib/dummyData";
+import { ServiceSection } from "@/components/ServiceSection";
+import { ProductSection } from "@/components/ProductSection";
 
 export default function Home() {
   return (
     <>
-      <section className="relative h-screen flex border-b bg-slate-900 border-slate-800 text-white min-h-[600px] items-center">
-        <div className="absolute inset-0 bg-emerald-900/20"></div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex items-center h-full pt-16">
-          <div className="max-w-2xl">
-            <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-6">
-              Next-Gen <span className="text-emerald-500">Solar Security</span>
-            </h1>
-            <p className="text-xl text-slate-300 mb-8">
-              Protect your perimeter with industry-leading solar powered fencing solutions. Reliable, sustainable, and built for maximum endurance.
-            </p>
-            <div className="flex space-x-4">
-              <Link href="/products" className="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-md font-medium transition flex items-center space-x-2">
-                <span>View Products</span>
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-              <Link href="/contact" className="bg-white/10 hover:bg-white/20 text-white px-6 py-3 rounded-md font-medium transition backdrop-blur-sm">
-                Get a Quote
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <SectionWrapper className="bg-slate-50">
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <h2 className="text-3xl font-bold text-slate-900 mb-4">Why Super Solar Fencing?</h2>
-          <p className="text-slate-600">Our systems provide maximum deterrent with zero environmental impact and minimal maintenance.</p>
-        </div>
+      {/* Hero Section */}
+      <section 
+        className="relative flex min-h-[85vh] w-full items-center justify-start bg-[#1C1C1C] overflow-hidden"
+        style={{
+          backgroundImage: "url('https://i.ytimg.com/vi/e59oaLBmi64/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLARKqzi0hlUZzV7Ucb0Oxelc-EiOA')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat"
+        }}
+      >
+        {/* Background Overlay */}
+        <div className="absolute inset-0 bg-black/40 z-0" />
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {[
-            { icon: Zap, title: "High Output Power", desc: "Delivers maximum non-lethal shock to deter any intrusion effectively." },
-            { icon: Sun, title: "100% Solar Powered", desc: "Completely off-grid capable with high-capacity battery backups for cloudy days." },
-            { icon: ShieldCheck, title: "Durable Materials", desc: "Weather-resistant components designed to withstand harsh outdoor conditions over decades." }
-          ].map((feature, i) => (
-            <div key={i} className="bg-white p-8 rounded-xl shadow-sm border border-slate-100 hover:shadow-md transition">
-              <div className="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-lg flex items-center justify-center mb-6">
-                <feature.icon className="w-6 h-6" />
-              </div>
-              <h3 className="text-xl font-semibold text-slate-900 mb-3">{feature.title}</h3>
-              <p className="text-slate-600">{feature.desc}</p>
+        <div className="relative max-w-[1400px] mx-auto px-4 md:px-6 lg:px-8 z-10 w-full flex flex-col justify-center h-full">
+          <div className="max-w-4xl space-y-6">
+            <h1 className="text-5xl md:text-6xl lg:text-[75px] font-bold text-white leading-[1.15] tracking-tight">
+              Top Solar and <br/> Renewable Energy
+            </h1>
+            <p className="text-gray-200 text-base md:text-lg leading-relaxed max-w-2xl mt-4 mb-8">
+              Vero elitr justo clita dolor at sed stet sit diam no. Kasd rebum ipsum et diam<br className="hidden md:block"/> justo clita et kasd rebum sea elitr.
+            </p>
+            <div className="pt-2">
+              <Link
+                href="/about"
+                className="inline-block rounded-full bg-[#FF7A49] px-8 py-3.5 text-sm font-medium text-white hover:bg-[#e66a3d] transition-all"
+              >
+                Read More
+              </Link>
             </div>
-          ))}
-        </div>
-      </SectionWrapper>
-      
-      <SectionWrapper>
-        <div className="flex justify-between items-end mb-12">
-          <div>
-            <h2 className="text-3xl font-bold text-slate-900 mb-4">Featured Products</h2>
-            <p className="text-slate-600 max-w-xl">Browse our top-rated solar energizers and premium accessories.</p>
           </div>
-          <Link href="/products" className="hidden sm:flex text-emerald-600 font-medium items-center hover:text-emerald-700">
-            View All <ArrowRight className="w-4 h-4 ml-1" />
-          </Link>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {productData.map((product) => (
-            <Link href={`/products/${product.slug}`} key={product.id} className="group flex flex-col bg-white border border-slate-200 rounded-xl overflow-hidden hover:shadow-xl transition-all h-full">
-              <div className="h-48 bg-slate-100 w-full flex items-center justify-center">
-                <Shield className="w-12 h-12 text-slate-300 group-hover:scale-110 transition duration-300" />
-              </div>
-              <div className="p-6 flex-grow flex flex-col">
-                <span className="text-xs font-semibold text-emerald-600 tracking-wider uppercase mb-2">{product.category}</span>
-                <h3 className="text-lg font-bold text-slate-900 mb-2">{product.name}</h3>
-                <p className="text-slate-600 text-sm mb-4 line-clamp-2 flex-grow">{product.shortDescription}</p>
-                <div className="flex items-center justify-between mt-auto pt-4 border-t border-slate-100">
-                  <span className="font-bold text-lg text-slate-900">${product.price.toFixed(2)}</span>
-                  <span className="text-emerald-600 text-sm font-medium">Details →</span>
-                </div>
-              </div>
-            </Link>
-          ))}
-        </div>
-        <div className="mt-8 text-center sm:hidden">
-          <Link href="/products" className="inline-flex text-emerald-600 font-medium items-center hover:text-emerald-700">
-            View All Products <ArrowRight className="w-4 h-4 ml-1" />
-          </Link>
-        </div>
-      </SectionWrapper>
-
-      <section className="bg-emerald-900 text-white py-20">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-4xl font-bold mb-6">Ready to secure your perimeter?</h2>
-          <p className="text-emerald-100 mb-8 text-lg">
-            Get in touch with our security experts for a custom quote and perimeter assessment.
-          </p>
-          <Link href="/contact" className="inline-block bg-emerald-500 hover:bg-emerald-400 text-white px-8 py-4 rounded-md font-bold text-lg transition shadow-lg">
-            Request an Assessment
-          </Link>
+        {/* Bottom Slider Indicators */}
+        <div className="absolute bottom-8 left-0 right-0 z-10 flex justify-center items-center space-x-3">
+          <div className="h-1 w-10 bg-[#FF7A49] rounded-full"></div>
+          <div className="h-1 w-10 bg-white/40 rounded-full cursor-pointer hover:bg-white/60 transition-colors"></div>
+          <div className="h-1 w-10 bg-white/40 rounded-full cursor-pointer hover:bg-white/60 transition-colors"></div>
         </div>
       </section>
+
+      {/* Stats & About Section */}
+      <section className="bg-[#FAF7F2] py-24 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-[1200px] mx-auto">
+          {/* Stats Row */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-24 max-w-4xl mx-auto text-center">
+            <div className="flex flex-col items-center justify-center space-y-3">
+              <span className="text-5xl font-extrabold text-[#FF7A49]">50+</span>
+              <span className="text-xs font-bold text-gray-500 tracking-widest uppercase">Happy Customers</span>
+            </div>
+            <div className="flex flex-col items-center justify-center space-y-3">
+              <span className="text-5xl font-extrabold text-[#FF7A49]">30+</span>
+              <span className="text-xs font-bold text-gray-500 tracking-widest uppercase">Project Done</span>
+            </div>
+            <div className="flex flex-col items-center justify-center space-y-3">
+              <span className="text-5xl font-extrabold text-[#FF7A49]">10+</span>
+              <span className="text-xs font-bold text-gray-500 tracking-widest uppercase">Products</span>
+            </div>
+          </div>
+
+          {/* About Content Layout */}
+          <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+            {/* Left Image Side */}
+            <div className="relative pl-6 pt-6">
+              {/* Decorative offset box from the image (slightly lower and further left) */}
+              <div className="absolute top-0 left-0 w-[95%] h-full bg-[#EFEBE4] z-0"></div>
+              
+              {/* Main Image Area */}
+              <div className="relative z-10 w-full aspect-[4/3] shadow-sm bg-gray-200">
+                <Image 
+                  src="https://tiimg.tistatic.com/fp/1/008/150/iron-solar-fencing-for-security-purposes-output-voltage-5-10-kva-321.jpg" 
+                  alt="Installation of solar panels"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            </div>
+
+            {/* Right Text Side */}
+            <div className="space-y-6">
+              <span className="text-[#FF7A49] font-bold text-[13px] tracking-widest uppercase mb-4 block">About Us</span>
+              <h2 className="text-[40px] md:text-5xl font-extrabold text-[#1C2028] leading-[1.15] tracking-tight">
+                Among The Top 10 Solar & <br className="hidden md:block" />
+                Renewable Energy <br className="hidden md:block" />
+                Industry
+              </h2>
+              <p className="text-[#969696] text-[15px] leading-relaxed max-w-lg mt-6">
+                Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo erat amet. Tempor erat sed stet lorem sit clita duo justo elitr rebum at clita diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo erat amet
+              </p>
+              <div className="pt-6">
+                <Link
+                  href="/about"
+                  className="inline-block rounded-full bg-[#FF7A49] px-9 py-3.5 text-sm font-medium text-white hover:bg-[#e66a3d] transition-all"
+                >
+                  Find Out More
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Products Section */}
+      <ProductSection />
+
+      {/* Motive / Why Choose Us Section */}
+      <section className="bg-[#FAF7F2] py-24 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-[1200px] mx-auto">
+          {/* Header Content */}
+          <div className="max-w-3xl mb-16">
+            <span className="text-[#FF7A49] font-bold text-[13px] tracking-[0.2em] uppercase mb-4 block">Why Choose Us!</span>
+            <h2 className="text-[40px] md:text-[44px] font-extrabold text-[#1C2028] leading-[1.15] tracking-tight mb-6">
+              Our Motive To Change World
+            </h2>
+            <p className="text-[#969696] text-[15px] leading-relaxed max-w-2xl">
+              Aliqu diam amet diam et dolor diam ipsum sit tet lorem sit clita duo eos. Clita erat ipsum et lorem et sit, sed tempor erat elitr rebum at clita.
+            </p>
+          </div>
+
+          {/* Features Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12">
+            {[
+              { num: "01", text: "Quality\nServices" },
+              { num: "02", text: "Expert\nWorkers" },
+              { num: "03", text: "Free\nConsulting" },
+              { num: "04", text: "Customer\nSupport" }
+            ].map((item, i) => (
+              <div key={i} className="flex items-center group cursor-default">
+                {/* Large Outline Number */}
+                <span 
+                  className="text-[85px] leading-none font-bold text-transparent tracking-tighter transition-all duration-300" 
+                  style={{ WebkitTextStroke: '2px #E8DFD0' }}
+                >
+                  {item.num}
+                </span>
+                {/* Text Beside */}
+                <span className="text-[#1C2028] font-bold text-[13px] tracking-widest uppercase whitespace-pre-line leading-[1.6] -ml-4 z-10 transition-colors duration-300 group-hover:text-[#FF7A49]">
+                  {item.text}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+      
+      {/* Services Section */}
+      <ServiceSection />
     </>
   );
 }

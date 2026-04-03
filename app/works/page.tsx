@@ -1,8 +1,9 @@
-import WorksGalleryClient from "@/app/works/WorksGalleryClient";
-import { getCatalogProjects } from "@/lib/catalogData";
+import { ProjectSection } from "@/components/ProjectSection";
 
-export default async function WorksPage() {
-  const projects = await getCatalogProjects();
-
-  return <WorksGalleryClient projects={projects} />;
+export default function WorksPage() {
+  return (
+    <main className="pt-24 bg-[#FAF7F2] min-h-screen">
+      <ProjectSection isHomepage={false} />
+    </main>
+  );
 }
