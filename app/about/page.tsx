@@ -1,17 +1,21 @@
 import { SectionWrapper } from "@/components/SectionWrapper";
 import { Shield, Target, Award, CheckCircle } from "lucide-react";
+import { getAboutPageContent } from "@/lib/catalogData";
 
-export default function AboutPage() {
+export default async function AboutPage() {
+  const aboutContent = await getAboutPageContent();
+  const highlightedTitle = aboutContent.title.replace(/^about\s+/i, "");
+
   return (
     <main className="pt-24 pb-16 min-h-screen bg-slate-50">
       <SectionWrapper>
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h1 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-6 tracking-tight">
-            About <span className="text-emerald-600">Super Solar Fencing</span>
+            About <span className="text-emerald-600">{highlightedTitle}</span>
           </h1>
           <p className="text-lg text-slate-600 leading-relaxed">
-            We are industry leaders in designing, engineering, and manufacturing high-performance solar-powered perimeter security solutions for agricultural, industrial, and residential applications.
+            {aboutContent.content}
           </p>
         </div>
 
@@ -60,7 +64,7 @@ export default function AboutPage() {
                   "Compliance with international safety standards"
                 ].map((item, i) => (
                   <li key={i} className="flex items-start">
-                    <CheckCircle className="w-6 h-6 text-emerald-400 mr-4 flex-shrink-0 mt-0.5" />
+                    <CheckCircle className="w-6 h-6 text-emerald-400 mr-4 shrink-0 mt-0.5" />
                     <span className="text-slate-200 font-medium">{item}</span>
                   </li>
                 ))}

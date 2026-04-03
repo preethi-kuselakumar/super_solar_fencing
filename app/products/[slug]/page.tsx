@@ -1,16 +1,27 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { Check, ArrowLeft, Zap, ListTree } from "lucide-react";
-import { productData } from "@/lib/dummyData";
+import {
+  getCatalogProductBySlug,
+  getCatalogProducts,
+} from "@/lib/catalogData";
 import { SectionWrapper } from "@/components/SectionWrapper";
 import { ImageGallery } from "@/components/ImageGallery";
 
-export function generateStaticParams() {
-  return productData.map((p) => ({ slug: p.slug }));
+export async function generateStaticParams() {
+  const products = await getCatalogProducts();
+  return products.map((product) => ({ slug: product.slug }));
 }
 
-export default function ProductDetailsPage({ params }: { params: { slug: string } }) {
-  const product = productData.find((p) => p.slug === params.slug);
+type ProductDetailsPageProps = {
+  params: Promise<{ slug: string }>;
+};
+
+export default async function ProductDetailsPage({
+  params,
+}: ProductDetailsPageProps) {
+  const { slug } = await params;
+  const product = await getCatalogProductBySlug(slug);
 
   if (!product) {
     notFound();
@@ -24,7 +35,7 @@ export default function ProductDetailsPage({ params }: { params: { slug: string 
           Back to Products
         </Link>
         
-        <div className="bg-white rounded-[2rem] shadow-xl shadow-slate-200/50 border border-slate-100 overflow-hidden">
+        <div className="bg-white rounded-4xl shadow-xl shadow-slate-200/50 border border-slate-100 overflow-hidden">
           <div className="grid grid-cols-1 lg:grid-cols-12">
             
             {/* Left: Interactive Gallery */}
@@ -64,9 +75,9 @@ export default function ProductDetailsPage({ params }: { params: { slug: string 
                     Key Features
                   </h3>
                   <ul className="space-y-4">
-                    {product.features.map((feature: string, i: number) => (
+                    {product.features.map((feature, i) => (
                       <li key={i} className="flex items-start text-slate-700 bg-slate-50 p-4 rounded-xl">
-                        <Check className="w-5 h-5 text-emerald-500 mr-3 flex-shrink-0 mt-0.5" />
+                        <Check className="w-5 h-5 text-emerald-500 mr-3 shrink-0 mt-0.5" />
                         <span className="font-medium text-sm">{feature}</span>
                       </li>
                     ))}
@@ -82,7 +93,7 @@ export default function ProductDetailsPage({ params }: { params: { slug: string 
                   <div className="border border-slate-200 rounded-2xl overflow-hidden shadow-sm">
                     <table className="w-full text-left text-sm">
                       <tbody className="divide-y divide-slate-100">
-                        {product.specifications.map((spec: any, i: number) => (
+                        {product.specifications.map((spec, i) => (
                           <tr key={i} className="bg-white hover:bg-slate-50 transition-colors">
                             <th className="px-5 py-4 font-bold text-slate-800 w-1/3 bg-slate-50/50">
                               {spec.key}
