@@ -1,7 +1,9 @@
-"use client";
+﻿"use client";
 
 import { cn } from "@/lib/utils";
-import { MoveRight, Star } from "lucide-react";
+import { MoveRight } from "lucide-react";
+import Link from "next/link";
+import { motion } from "framer-motion";
 
 interface BlogPost {
   id: number;
@@ -9,7 +11,7 @@ interface BlogPost {
   category: string;
   imageUrl: string;
   href: string;
-  views: number;
+  views?: number;
   readTime?: number;
   rating?: number;
   className?: string;
@@ -41,14 +43,19 @@ export const Component = ({
         className,
       )}
     >
-      <h1 className="mb-2 text-center text-4xl font-extrabold capitalize !leading-[1.4] text-[#0F172A] md:text-5xl lg:text-6xl">
+      <motion.h1
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: false }}
+        className="mb-6 text-center text-3xl font-extrabold capitalize !leading-[1.4] text-[#2C2C2A] md:text-5xl"
+      >
         {title}
-      </h1>
+      </motion.h1>
 
       {backgroundLabel && (
         <span
           className={cn(
-            "text-foreground/[0.025] absolute -top-10 -z-50 select-none text-[180px] font-extrabold leading-[1] text-black/[0.03] md:text-[250px] lg:text-[400px]",
+            "pointer-events-none absolute -top-10 -z-50 select-none text-[180px] font-extrabold leading-[1] text-black/[0.02] md:text-[250px] lg:text-[400px]",
             backgroundPosition === "left" ? "-left-[18%]" : "-right-[28%]",
           )}
         >
@@ -56,80 +63,79 @@ export const Component = ({
         </span>
       )}
 
-      <p className="mx-auto mb-8 max-w-[800px] text-center text-xl !leading-[2] text-[#334155] md:text-2xl">
+      <motion.p
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: false }}
+        transition={{ delay: 0.1 }}
+        className="mx-auto mb-10 max-w-[800px] text-center text-lg !leading-[1.8] text-[#5F5E5A] md:text-xl"
+      >
         {description}
-      </p>
+      </motion.p>
+      
+      {/* Show More Header */}
+      <motion.div 
+        initial={{ opacity: 0, x: 20 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: false }}
+        transition={{ delay: 0.2 }}
+        className="flex justify-end mb-6"
+      >
+        <Link 
+          href="/products" 
+          className="group flex items-center gap-2 text-lg font-bold text-[#639922] transition-colors hover:text-[#4d7a1a]"
+        >
+          Show More
+          <MoveRight className="transition-transform duration-300 group-hover:translate-x-1" size={20} />
+        </Link>
+      </motion.div>
 
-      <div className="grid h-auto grid-cols-1 gap-5 md:h-[650px] md:grid-cols-2 lg:grid-cols-[1fr_0.5fr]">
+      <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
         {posts.map((post, index) => {
           const {
             id,
             title: postTitle,
-            category,
             imageUrl,
-            views,
-            readTime,
-            rating = 4,
+            href = "/products",
             className: postClassName,
           } = post;
 
-          const isPrimary = index === 0;
-
           return (
-            <div
+            <motion.div
+              initial={{ opacity: 0, y: 100, scale: 0.8 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: false, amount: 0.2 }}
+              transition={{ duration: 0.8, delay: index * 0.15, ease: [0.25, 0.46, 0.45, 0.94] }}
               key={id || index}
-              style={{ backgroundImage: `url(${imageUrl})` }}
-              className={cn(
-                "group relative row-span-1 flex size-full cursor-pointer flex-col justify-end overflow-hidden rounded-[20px] bg-cover bg-center bg-no-repeat p-5 text-white transition-all duration-300 hover:rotate-[0.3deg] hover:scale-[0.98] max-md:h-[300px]",
-                isPrimary &&
-                  "col-span-1 row-span-1 md:col-span-2 md:row-span-2 lg:col-span-1",
-                postClassName,
-              )}
-              onClick={() => onPostClick?.(post)}
+              className="h-full w-full"
             >
-              <div className="absolute inset-0 -z-0 h-[130%] w-full bg-gradient-to-t from-black/90 via-black/55 to-black/25 transition-all duration-500 group-hover:h-full" />
+              <Link
+                href={href}
+                className={cn(
+                  "group relative flex h-[280px] md:h-[400px] w-full cursor-pointer flex-col justify-end overflow-hidden rounded-[20px] bg-cover bg-center bg-no-repeat p-4 md:p-6 text-white transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-[#639922]/20",
+                  postClassName,
+                )}
+                style={{ backgroundImage: `url(${imageUrl})` }}
+              >
+                {/* Gradient Overlays */}
+                <div className="absolute inset-0 -z-0 h-full w-full bg-gradient-to-t from-[#2C2C2A]/90 via-[#2C2C2A]/20 to-transparent transition-opacity duration-500 opacity-70 group-hover:opacity-90" />
+                <div className="absolute inset-0 -z-0 h-full w-full bg-[#639922]/0 transition-colors duration-500 group-hover:bg-[#639922]/20 mix-blend-overlay" />
 
-              <article className="relative z-0 flex items-end">
-                <div className="flex flex-1 flex-col gap-3">
-                  <h1 className="text-3xl font-extrabold text-white [text-shadow:0_2px_10px_rgba(0,0,0,0.65)] md:text-4xl">
+                <article className="relative z-10 flex w-full flex-row items-end justify-between gap-4">
+                  <h1 className="text-lg font-bold text-white sm:text-lg md:text-xl lg:text-2xl translate-y-2 group-hover:translate-y-0 transition-transform duration-500 [text-shadow:0_2px_10px_rgba(44,44,42,0.8)]">
                     {postTitle}
                   </h1>
-                  <div className="flex flex-col gap-3">
-                    <span className="w-fit rounded-md border border-white/30 bg-black/55 px-2 py-px text-base font-semibold capitalize text-white backdrop-blur-md">
-                      {category}
-                    </span>
-                    <div className="flex items-center gap-2">
-                      <div className="flex items-center gap-0.5">
-                        {Array.from({ length: 5 }).map((_, idx) => (
-                          <Star
-                            width={20}
-                            height={20}
-                            key={idx}
-                            stroke={idx < rating ? "#ffa534" : "#B9B8B8aa"}
-                            fill={idx < rating ? "#ffa534" : "#B9B8B8aa"}
-                          />
-                        ))}
-                      </div>
-                      <span className="text-lg font-medium text-white [text-shadow:0_1px_8px_rgba(0,0,0,0.7)]">
-                        ({views} Views)
-                      </span>
-                    </div>
-                    {readTime && (
-                      <div className="text-xl font-bold text-white [text-shadow:0_1px_8px_rgba(0,0,0,0.7)]">
-                        {readTime} min read
-                      </div>
-                    )}
+                  <div className="hidden sm:flex shrink-0 translate-y-2 opacity-0 -translate-x-4 transition-all duration-500 group-hover:translate-x-0 group-hover:translate-y-0 group-hover:opacity-100 items-center justify-center rounded-full bg-[#639922] p-2 md:p-3 shadow-[0_0_15px_rgba(99,153,34,0.5)]">
+                    <MoveRight
+                      className="text-white"
+                      width={24}
+                      height={24}
+                      strokeWidth={2.5}
+                    />
                   </div>
-                </div>
-                <MoveRight
-                  className="transition-all duration-300 group-hover:translate-x-2"
-                  color="white"
-                  width={40}
-                  height={40}
-                  strokeWidth={1.25}
-                />
-              </article>
-            </div>
+                </article>
+              </Link>
+            </motion.div>
           );
         })}
       </div>

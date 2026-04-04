@@ -83,7 +83,7 @@ export function ProjectSection({ isHomepage = true, projects }: ProjectSectionPr
     projects && projects.length > 0 ? projects : projectsData;
 
   return (
-    <section className="bg-[#F5F5F5] pb-24 w-full overflow-hidden">
+    <section className="bg-[#F5F5F5] pb-12 sm:pb-16 w-full overflow-hidden">
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-14">

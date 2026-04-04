@@ -9,6 +9,7 @@ import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { ChevronLeft, ChevronRight, SparklesIcon } from "lucide-react";
+import Link from "next/link";
 import {
   EffectCoverflow,
   Navigation,
@@ -18,7 +19,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 
 interface CarouselProps {
-  images: { src: string; alt: string }[];
+  images: { src: string; alt: string; href?: string }[];
   autoplayDelay?: number;
   showPagination?: boolean;
   showNavigation?: boolean;
@@ -39,7 +40,7 @@ export const CardCarousel: React.FC<CarouselProps> = ({
   subtitle = "Seamless product carousel animation.",
 }) => {
   const normalizedImages = images.filter(
-    (image): image is { src: string; alt: string } => Boolean(image?.src),
+    (image): image is { src: string; alt: string; href?: string } => Boolean(image?.src)
   );
 
   const repeatedImages =
@@ -216,14 +217,28 @@ export const CardCarousel: React.FC<CarouselProps> = ({
               >
                 {repeatedImages.map((image, index) => (
                   <SwiperSlide key={`slide-${index}-${image.alt}`}>
-                    <div className="size-full overflow-hidden">
-                      <img
-                        src={image.src}
-                        className="size-full object-cover"
-                        alt={image.alt}
-                        loading="lazy"
-                      />
-                    </div>
+                    {image.href ? (
+                      <Link href={image.href} className="block size-full overflow-hidden relative group cursor-pointer">
+                        <img
+                          src={image.src}
+                          className="size-full object-cover transition-transform duration-700 group-hover:scale-105"
+                          alt={image.alt}
+                          loading="lazy"
+                        />
+                        <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                          <span className="text-white font-bold tracking-widest uppercase text-sm border-b-2 border-[#639922] pb-1">View Service</span>
+                        </div>
+                      </Link>
+                    ) : (
+                      <div className="size-full overflow-hidden relative group">
+                        <img
+                          src={image.src}
+                          className="size-full object-cover transition-transform duration-700 group-hover:scale-105"
+                          alt={image.alt}
+                          loading="lazy"
+                        />
+                      </div>
+                    )}
                   </SwiperSlide>
                 ))}
               </Swiper>

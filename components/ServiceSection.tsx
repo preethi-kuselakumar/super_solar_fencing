@@ -75,7 +75,7 @@ export function ServiceSection() {
   const isSlider = serviceData.length > 4;
 
   return (
-    <section className="bg-[#F5F5F5] pb-24 h-full w-full">
+    <section className="bg-[#F5F5F5] pb-12 sm:pb-16 h-full w-full">
       {/* Header */}
       <div className="text-center max-w-2xl mx-auto mb-16 px-4">
         <span className="text-[#639922] font-bold text-[13px] tracking-widest uppercase mb-4 block">Our Services</span>
@@ -133,7 +133,7 @@ export function ServiceSection() {
 
 function ServiceCard({ service }: { service: ServiceItem }) {
   return (
-    <div className="group relative h-[450px] w-full overflow-hidden cursor-pointer">
+    <Link href={service.link} className="group relative block h-[450px] w-full overflow-hidden cursor-pointer">
       {/* Background Image */}
       <Image 
         src={service.image} 
@@ -155,15 +155,14 @@ function ServiceCard({ service }: { service: ServiceItem }) {
           {service.desc}
         </p>
         <div className="pointer-events-auto w-max">
-          <Link 
-            href={service.link}
-            className="inline-flex items-center text-[13px] font-bold tracking-widest uppercase text-white hover:text-white transition-colors gap-2 group/link"
+          <span
+            className="inline-flex items-center text-[13px] font-bold tracking-widest uppercase text-white hover:text-white transition-colors gap-2 group/link" 
           >
-            Read More 
+            Read More
             <ArrowRight className="w-4 h-4 group-hover/link:translate-x-2 transition-transform" />
-          </Link>
+          </span>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }

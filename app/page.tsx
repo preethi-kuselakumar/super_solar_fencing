@@ -14,18 +14,22 @@ export default async function Home() {
     {
       src: "https://images.unsplash.com/photo-1509391366360-120953a17e1e?q=80&w=800&auto=format&fit=crop",
       alt: "Solar Panels",
+      href: "/services"
     },
     {
       src: "https://tiimg.tistatic.com/fp/1/008/150/iron-solar-fencing-for-security-purposes-output-voltage-5-10-kva-321.jpg",
       alt: "Solar Power Systems",
+      href: "/services"
     },
     {
       src: "https://images.unsplash.com/photo-1466611653911-95081537e5b7?q=80&w=800&auto=format&fit=crop",
       alt: "Hydropower Plants",
+      href: "/services"
     },
     {
       src: "https://images.unsplash.com/photo-1508514177221-188b1c77eca2?q=80&w=800&auto=format&fit=crop",
       alt: "Maintenance Service",
+      href: "/services"
     },
   ];
 
@@ -36,6 +40,7 @@ export default async function Home() {
     return {
       src: validSrc,
       alt: service.title || fallback.alt,
+      href: "/services",
     };
   });
 
@@ -48,55 +53,38 @@ export default async function Home() {
     "https://images.unsplash.com/photo-1508514177221-188b1c77eca2?q=80&w=1600&auto=format&fit=crop",
   ];
 
-  const productPosts = products.slice(0, 3).map((product, index) => ({
-    id: index + 1,
-    title: product.name,
-    category: product.category || "Solar Products",
-    imageUrl:
-      product.images?.[0]?.startsWith("http")
-        ? product.images[0]
-        : fallbackProductImages[index % fallbackProductImages.length],
-    href: `/products/${product.slug}`,
-    views: 1200 + index * 270,
-    readTime: 4 + index * 2,
-    rating: 5 - (index % 2),
-  }));
-
-  const productSectionPosts =
-    productPosts.length > 0
-      ? productPosts
-      : [
-          {
-            id: 1,
-            title: "Solar Electric Shock Fence",
-            category: "Solar Security",
-            imageUrl: fallbackProductImages[0],
-            href: "/products",
-            views: 1860,
-            readTime: 6,
-            rating: 5,
-          },
-          {
-            id: 2,
-            title: "Solar Power Fencing System",
-            category: "Perimeter Safety",
-            imageUrl: fallbackProductImages[1],
-            href: "/products",
-            views: 1490,
-            readTime: 7,
-            rating: 4,
-          },
-          {
-            id: 3,
-            title: "Agricultural Fencing Kit",
-            category: "Farm Solutions",
-            imageUrl: fallbackProductImages[2],
-            href: "/products",
-            views: 1330,
-            readTime: 5,
-            rating: 4,
-          },
-        ];
+  const productSectionPosts = [
+    {
+      id: 1,
+      title: "Solar Electric Shock Fence",
+      category: "Solar Security",
+      imageUrl: "https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?q=80&w=1600&auto=format&fit=crop",
+      href: "/products",
+      views: 1860,
+      readTime: 6,
+      rating: 5,
+    },
+    {
+      id: 2,
+      title: "Solar Power Fencing System",
+      category: "Perimeter Safety",
+      imageUrl: "https://images.unsplash.com/photo-1509391366360-2e959784a276?q=80&w=1600&auto=format&fit=crop",
+      href: "/products",
+      views: 1490,
+      readTime: 7,
+      rating: 5,
+    },
+    {
+      id: 3,
+      title: "Agricultural Fencing Kit",
+      category: "Farm Solutions",
+      imageUrl: "https://tiimg.tistatic.com/fp/1/008/150/iron-solar-fencing-for-security-purposes-output-voltage-5-10-kva-321.jpg",
+      href: "/products",
+      views: 1330,
+      readTime: 5,
+      rating: 4,
+    }
+  ];
 
   return (
     <>
@@ -114,28 +102,28 @@ export default async function Home() {
 
         <div className="relative mx-auto flex min-h-[78vh] w-full max-w-[1400px] items-center px-4 py-16 sm:px-6 lg:px-8">
           <div className="max-w-3xl space-y-5 sm:space-y-6">
-            <p className="text-[12px] font-bold uppercase tracking-[0.2em] text-[#9CCF63] sm:text-[13px]">
+            <p className="animate-fade-in-up text-[12px] font-bold uppercase tracking-[0.2em] text-[#9CCF63] sm:text-[13px]">
               Trusted Solar Protection
             </p>
-            <h1 className="text-3xl font-extrabold leading-tight tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl">
+            <h1 className="animate-fade-in-up delay-100 text-3xl font-extrabold leading-tight tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl">
               Secure Perimeters With
               <br className="hidden sm:block" />
-              Smart Solar Fencing
+              <span className="relative inline-block text-transparent bg-clip-text bg-gradient-to-r from-white to-[#9CCF63]">Smart Solar Fencing</span>
             </h1>
-            <p className="max-w-2xl text-[15px] leading-7 text-gray-200 sm:text-base">
+            <p className="animate-fade-in-up delay-200 max-w-2xl text-[15px] leading-7 text-gray-200 sm:text-base">
               Durable, low-maintenance fencing systems built for farms, factories,
               and open land with dependable solar-powered performance.
             </p>
-            <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+            <div className="animate-fade-in-up delay-300 flex flex-col gap-3 sm:flex-row sm:items-center">
               <Link
                 href="/products"
-                className="inline-flex min-h-[46px] items-center justify-center rounded-xl bg-[#639922] px-6 text-sm font-bold uppercase tracking-wider text-white transition hover:bg-[#547f1d]"
+                className="hover-electric-glow inline-flex min-h-[46px] items-center justify-center rounded-xl bg-[#639922] px-6 text-sm font-bold uppercase tracking-wider text-white transition hover:bg-[#547f1d]"
               >
                 Explore Products
               </Link>
               <Link
                 href="/contact"
-                className="inline-flex min-h-[46px] items-center justify-center rounded-xl border border-white/40 bg-white/10 px-6 text-sm font-bold uppercase tracking-wider text-white backdrop-blur transition hover:bg-white/20"
+                className="inline-flex min-h-[46px] items-center justify-center rounded-xl border border-white/40 bg-white/10 px-6 text-sm font-bold uppercase tracking-wider text-white backdrop-blur transition hover:bg-white/20 hover:border-[#639922] hover:text-[#9CCF63]"
               >
                 Contact Us
               </Link>
@@ -144,26 +132,26 @@ export default async function Home() {
         </div>
       </section>
 
-      <section className="bg-[#F5F5F5] px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
+      <section className="bg-[#F5F5F5] px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-10 sm:py-14">
         <div className="max-w-[1200px] mx-auto">
           {/* Stats cards are horizontal on mobile and 3-column on larger screens */}
           <div className="mb-12 sm:mb-14">
             <div className="flex snap-x gap-4 overflow-x-auto pb-2 sm:grid sm:grid-cols-3 sm:gap-5 sm:overflow-visible sm:pb-0">
-            <div className="min-w-[240px] snap-start rounded-2xl border border-slate-200 bg-white p-5 text-center shadow-sm sm:min-w-0">
-              <p className="text-3xl font-extrabold text-[#639922] sm:text-4xl">50+</p>
-              <p className="mt-2 text-[11px] font-bold uppercase tracking-widest text-slate-600 sm:text-[12px]">
+            <div className="group min-w-[240px] snap-start rounded-2xl border border-slate-200 bg-white p-5 text-center shadow-sm sm:min-w-0 transition-transform duration-300 hover:-translate-y-1 hover:shadow-md hover:border-[#639922]/30">
+              <p className="text-3xl font-extrabold text-[#639922] sm:text-4xl transition-colors duration-300 group-hover:text-[#547f1d]">50+</p>
+              <p className="mt-2 text-[11px] font-bold uppercase tracking-widest text-slate-600 sm:text-[12px] group-hover:text-[#639922] transition-colors duration-300">
                 Happy Customers
               </p>
             </div>
-            <div className="min-w-[240px] snap-start rounded-2xl border border-slate-200 bg-white p-5 text-center shadow-sm sm:min-w-0">
-              <p className="text-3xl font-extrabold text-[#639922] sm:text-4xl">30+</p>
-              <p className="mt-2 text-[11px] font-bold uppercase tracking-widest text-slate-600 sm:text-[12px]">
+            <div className="group min-w-[240px] snap-start rounded-2xl border border-slate-200 bg-white p-5 text-center shadow-sm sm:min-w-0 transition-transform duration-300 hover:-translate-y-1 hover:shadow-md hover:border-[#639922]/30 delay-100">
+              <p className="text-3xl font-extrabold text-[#639922] sm:text-4xl transition-colors duration-300 group-hover:text-[#547f1d]">30+</p>
+              <p className="mt-2 text-[11px] font-bold uppercase tracking-widest text-slate-600 sm:text-[12px] group-hover:text-[#639922] transition-colors duration-300">
                 Projects Completed
               </p>
             </div>
-            <div className="min-w-[240px] snap-start rounded-2xl border border-slate-200 bg-white p-5 text-center shadow-sm sm:min-w-0">
-              <p className="text-3xl font-extrabold text-[#639922] sm:text-4xl">10+</p>
-              <p className="mt-2 text-[11px] font-bold uppercase tracking-widest text-slate-600 sm:text-[12px]">
+            <div className="group min-w-[240px] snap-start rounded-2xl border border-slate-200 bg-white p-5 text-center shadow-sm sm:min-w-0 transition-transform duration-300 hover:-translate-y-1 hover:shadow-md hover:border-[#639922]/30 delay-200">
+              <p className="text-3xl font-extrabold text-[#639922] sm:text-4xl transition-colors duration-300 group-hover:text-[#547f1d]">10+</p>
+              <p className="mt-2 text-[11px] font-bold uppercase tracking-widest text-slate-600 sm:text-[12px] group-hover:text-[#639922] transition-colors duration-300">
                 Product Lines
               </p>
             </div>
@@ -194,7 +182,7 @@ export default async function Home() {
           />
 
           {/* About section uses single-column first, then two-column on large screens */}
-          <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-16">
+          <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-8 sm:gap-10">
             <div className="relative order-2 hidden lg:order-1 lg:block">
               <div className="absolute -left-3 -top-3 h-full w-full rounded-2xl bg-[#EDE8DE] sm:-left-4 sm:-top-4" />
               <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-gray-200 shadow-sm">
@@ -274,8 +262,8 @@ export default async function Home() {
                 key={i}
                 className="group relative min-h-[126px] overflow-hidden rounded-2xl border border-slate-200 bg-white p-3 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md hover:border-[#639922]/40 active:scale-[0.98] sm:min-h-[138px] sm:p-4"
               >
-                <span 
-                  className="pointer-events-none absolute left-2 top-1 text-[52px] leading-none font-extrabold tracking-tighter text-slate-300/45 transition-all duration-300 sm:left-3 sm:top-2 sm:text-[64px]" 
+                <span
+                  className="pointer-events-none absolute left-2 top-0 text-[64px] leading-none font-black tracking-tighter text-slate-200 transition-all duration-300 group-hover:text-[#639922]/15 sm:left-3 sm:-top-1 sm:text-[80px]"
                 >
                   {item.num}
                 </span>

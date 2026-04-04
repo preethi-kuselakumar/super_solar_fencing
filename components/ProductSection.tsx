@@ -8,7 +8,7 @@ type ProductItem = (typeof productData)[number];
 
 export function ProductSection() {
   return (
-    <section className="bg-[#F5F5F5] py-24 w-full overflow-hidden">
+    <section className="bg-[#F5F5F5] py-12 sm:py-16 w-full overflow-hidden">
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-14">

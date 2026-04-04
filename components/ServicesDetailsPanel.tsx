@@ -42,7 +42,7 @@ export function ServicesDetailsPanel({ services }: ServicesDetailsPanelProps) {
         onSelect={setSelectedAnchor}
       />
 
-      <div className="py-20 px-4 md:px-8 max-w-7xl mx-auto">
+      <div className="py-10 sm:py-14 px-4 md:px-8 max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 items-stretch group bg-white shadow-md rounded-2xl overflow-hidden">
           <div className="lg:col-span-5 h-[300px] lg:h-auto relative overflow-hidden">
             <Image

@@ -66,15 +66,15 @@ export default async function AboutPage() {
 
   return (
     <>
-      <section className="bg-[#F5F5F5] py-14 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-[1200px] mx-auto space-y-14">
-          <div className="bg-white border border-slate-200 rounded-2xl p-6 md:p-10 shadow-sm">
-            <div className="grid lg:grid-cols-12 gap-8 items-center">
+      <section className="bg-[#F5F5F5] py-10 sm:py-12 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-[1200px] mx-auto space-y-8">
+          <div className="bg-white border border-slate-200 rounded-2xl p-6 md:p-8 shadow-sm">
+            <div className="grid lg:grid-cols-12 gap-6 items-center">
               <div className="lg:col-span-8">
-                <h2 className="text-[34px] md:text-[40px] font-extrabold text-[#1f2937] tracking-tight mb-5">
+                <h2 className="text-3xl md:text-4xl font-extrabold text-[#2C2C2A] tracking-tight mb-4">
                   About Us
                 </h2>
-                <p className="text-slate-700 text-[17px] leading-relaxed">
+                <p className="text-[#5F5E5A] text-[15px] leading-relaxed">
                   Incorporated in the year 2002 at Dindigul, Tamil Nadu, we "Safe & Save Equipments" are a Sole Proprietorship (Individual)
                   based company, engaged as the Manufacturer of Agriculture Solar Fencing and many more. All these products are provided to
                   the customer after tested on various quality parameters. Under the mentorship of "K.C. Senthil Kumar" we have gained name
@@ -99,11 +99,11 @@ export default async function AboutPage() {
           <AboutProductVideos videos={youtubeLinks} />
 
           <div className="bg-white border border-slate-200 rounded-2xl p-6 md:p-8 shadow-sm">
-              <h3 className="text-4xl font-extrabold text-[#1f2937] mb-4 tracking-tight">Our Infrastructure</h3>
-              <p className="text-slate-700 text-lg mb-4">Our Board Image</p>
+              <h3 className="text-2xl font-extrabold sm:text-3xl text-[#2C2C2A] mb-4 tracking-tight">Our Infrastructure</h3>
+              <p className="text-[#5F5E5A] text-[15px] mb-6">Our Board Image</p>
               <Link
                 href="/contact"
-                className="inline-flex px-8 py-3 bg-[#0f766e] text-white rounded-md font-bold hover:bg-[#115e59] transition"
+                className="inline-flex px-8 py-3 bg-[#639922] text-white rounded-md font-bold hover:bg-[#5F5E5A] transition"
               >
                 Contact Us
               </Link>
@@ -119,39 +119,39 @@ export default async function AboutPage() {
             </div>
           </div>
 
-          <div className="bg-white border border-slate-200 rounded-2xl p-6 md:p-10 shadow-sm">
-            <h3 className="text-3xl font-extrabold text-[#1f2937] text-center mb-8">Factsheet</h3>
+          <div className="bg-white border border-slate-200 rounded-2xl p-6 md:p-8 shadow-sm">
+            <h3 className="text-2xl font-extrabold sm:text-3xl text-[#2C2C2A] text-center mb-8">Factsheet</h3>
 
-            <div className="space-y-10">
+            <div className="space-y-8">
               <div>
-                <h4 className="text-2xl font-bold text-[#1f2937] mb-4">Basic Information</h4>
+                <h4 className="text-xl font-bold sm:text-2xl text-[#2C2C2A] mb-4">Basic Information</h4>
                 <div className="divide-y divide-slate-200 border border-slate-200 rounded-xl overflow-hidden">
                   {factsheetBasic.map(([label, value]) => (
                     <div key={label} className="grid md:grid-cols-3 gap-2 md:gap-6 p-4 bg-white">
-                      <p className="text-slate-600 font-semibold">{label}</p>
-                      <p className="md:col-span-2 text-slate-800 font-medium">{value}</p>
+                      <p className="text-[#5F5E5A] font-semibold">{label}</p>
+                      <p className="md:col-span-2 text-[#2C2C2A] font-medium">{value}</p>
                     </div>
                   ))}
                 </div>
               </div>
 
               <div>
-                <h4 className="text-2xl font-bold text-[#1f2937] mb-4">Statutory Profile</h4>
+                <h4 className="text-xl font-bold sm:text-2xl text-[#2C2C2A] mb-4">Statutory Profile</h4>
                 <div className="divide-y divide-slate-200 border border-slate-200 rounded-xl overflow-hidden">
                   {factsheetStatutory.map(([label, value]) => (
                     <div key={label} className="grid md:grid-cols-3 gap-2 md:gap-6 p-4 bg-white">
-                      <p className="text-slate-600 font-semibold">{label}</p>
-                      <p className="md:col-span-2 text-slate-800 font-medium">{value}</p>
+                      <p className="text-[#5F5E5A] font-semibold">{label}</p>
+                      <p className="md:col-span-2 text-[#2C2C2A] font-medium">{value}</p>
                     </div>
                   ))}
                 </div>
               </div>
 
               <div>
-                <h4 className="text-2xl font-bold text-[#1f2937] mb-4">Packaging/Payment and Shipment Details</h4>
+                <h4 className="text-xl font-bold sm:text-2xl text-[#2C2C2A] mb-4">Packaging/Payment and Shipment Details</h4>
                 <div className="grid md:grid-cols-3 gap-2 md:gap-6 p-4 border border-slate-200 rounded-xl bg-white">
-                  <p className="text-slate-600 font-semibold">Payment Mode</p>
-                  <ul className="md:col-span-2 text-slate-800 font-medium space-y-1">
+                  <p className="text-[#5F5E5A] font-semibold">Payment Mode</p>
+                  <ul className="md:col-span-2 text-[#2C2C2A] font-medium space-y-1">
                     {paymentModes.map((mode) => (
                       <li key={mode}>{mode}</li>
                     ))}
@@ -161,16 +161,16 @@ export default async function AboutPage() {
             </div>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-8 items-stretch">
+          <div className="grid lg:grid-cols-2 gap-6 items-stretch">
             <div className="bg-white border border-slate-200 rounded-2xl p-6 md:p-8 shadow-sm h-full">
-              <h3 className="text-4xl font-extrabold text-[#1f2937] mb-4 tracking-tight">Why Us?</h3>
-              <p className="text-slate-700 text-[17px] leading-relaxed mb-6">
+              <h3 className="text-2xl font-extrabold sm:text-3xl text-[#2C2C2A] mb-4 tracking-tight">Why Us?</h3>
+              <p className="text-[#5F5E5A] text-[15px] leading-relaxed mb-6">
                 Due to our massive knowledge of this business, we have been able to attain a huge client base in the industry.
               </p>
-              <p className="text-slate-800 font-bold mb-3">
+              <p className="text-[#2C2C2A] font-bold mb-3">
                 Factors which differentiate us from others in the market are:
               </p>
-              <ul className="list-disc pl-5 text-slate-700 leading-relaxed space-y-1">
+              <ul className="list-disc pl-5 text-[#5F5E5A] leading-relaxed space-y-1">
                 {whyUs.map((item) => (
                   <li key={item}>{item}</li>
                 ))}
@@ -178,11 +178,11 @@ export default async function AboutPage() {
             </div>
 
             <div className="bg-white border border-slate-200 rounded-2xl p-6 md:p-8 shadow-sm h-full flex flex-col">
-              <h3 className="text-4xl font-extrabold text-[#1f2937] mb-4 tracking-tight">Infrastructural Set-Up</h3>
-              <p className="text-slate-700 text-lg mb-4">Office Image</p>
+              <h3 className="text-2xl font-extrabold sm:text-3xl text-[#2C2C2A] mb-4 tracking-tight">Infrastructural Set-Up</h3>
+              <p className="text-[#5F5E5A] text-[15px] mb-6">Office Image</p>
               <Link
                 href="/contact"
-                className="inline-flex px-8 py-3 bg-[#0f766e] text-white rounded-md font-bold hover:bg-[#115e59] transition"
+                className="inline-flex px-8 py-3 bg-[#639922] text-white rounded-md font-bold hover:bg-[#5F5E5A] transition w-fit"
               >
                 Contact Us
               </Link>
