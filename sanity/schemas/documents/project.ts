@@ -1,6 +1,6 @@
 import { defineArrayMember, defineField, defineType } from "sanity";
 
-export const projectType = defineType({
+const project = defineType({
   name: "project",
   title: "Project",
   type: "document",
@@ -62,3 +62,6 @@ export const projectType = defineType({
     },
   ],
 });
+
+export default project;
+export { project as projectType };

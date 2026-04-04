@@ -1,6 +1,6 @@
 import { defineField, defineType } from "sanity";
 
-export const aboutPageType = defineType({
+const aboutPage = defineType({
   name: "aboutPage",
   title: "About Page",
   type: "document",
@@ -52,3 +52,6 @@ export const aboutPageType = defineType({
     },
   ],
 });
+
+export default aboutPage;
+export { aboutPage as aboutPageType };

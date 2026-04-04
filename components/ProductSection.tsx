@@ -4,6 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { productData } from "@/lib/dummyData";
 
+type ProductItem = (typeof productData)[number];
+
 export function ProductSection() {
   return (
     <section className="bg-[#FAF7F2] py-24 w-full overflow-hidden">
@@ -29,7 +31,7 @@ export function ProductSection() {
   );
 }
 
-function ProductCard({ product }: { product: unknown }) {
+function ProductCard({ product }: { product: ProductItem }) {
   // Use a sensible default if the image is just a placeholder path without actual image
   const defaultImage = "https://images.unsplash.com/photo-1509391366360-120953a17e1e?q=80&w=800&auto=format&fit=crop";
   const imageSrc = product.images?.[0] && product.images[0] !== "/placeholder.jpg" 

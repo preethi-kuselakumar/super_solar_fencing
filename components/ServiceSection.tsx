@@ -69,6 +69,8 @@ const serviceData = [
   }
 ];
 
+type ServiceItem = (typeof serviceData)[number];
+
 export function ServiceSection() {
   const isSlider = serviceData.length > 4;
 
@@ -132,7 +134,7 @@ export function ServiceSection() {
   );
 }
 
-function ServiceCard({ service }: { service: unknown }) {
+function ServiceCard({ service }: { service: ServiceItem }) {
   return (
     <div className="group relative h-[450px] w-full overflow-hidden cursor-pointer">
       {/* Background Image */}

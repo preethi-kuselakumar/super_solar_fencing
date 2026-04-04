@@ -1,21 +1,13 @@
-import { aboutPageType } from "./documents/aboutPage";
-import { categoryType } from "./documents/category";
-import { productType } from "./documents/product";
-import { projectType } from "./documents/project";
-import { specificationType } from "./objects/specification";
+import product from "./documents/product";
+import category from "./documents/category";
+import project from "./documents/project";
+import aboutPage from "./documents/aboutPage";
+import specification from "./objects/specification";
 
 export const schemaTypes = [
-  specificationType,
-  categoryType,
-  productType,
-  projectType,
-  aboutPageType,
+  product,
+  category,
+  project,
+  aboutPage,
+  specification,
 ];
-
-export {
-  aboutPageType,
-  categoryType,
-  productType,
-  projectType,
-  specificationType,
-};

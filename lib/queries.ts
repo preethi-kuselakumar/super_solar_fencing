@@ -57,7 +57,7 @@ export const featuredProductsQuery = groq`
 `;
 
 export const productBySlugQuery = groq`
-  *[_type == "product" && slug.current == $slug][0]
+  *[_type == "product" && lower(slug.current) == lower($slug)][0]
   ${productProjection}
 `;
 

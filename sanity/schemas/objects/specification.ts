@@ -1,6 +1,6 @@
 import { defineField, defineType } from "sanity";
 
-export const specificationType = defineType({
+const specification = defineType({
   name: "specification",
   title: "Specification",
   type: "object",
@@ -55,3 +55,6 @@ export const specificationType = defineType({
     },
   },
 });
+
+export default specification;
+export { specification as specificationType };

@@ -62,6 +62,8 @@ export const projectsData = [
   }
 ];
 
+type ProjectItem = (typeof projectsData)[number];
+
 export function ProjectSection({ isHomepage = true }: { isHomepage?: boolean }) {
   // If it's the homepage, show exactly 6 items max at a time before needing to scroll the box.
   const displayProjects = projectsData; // In real app, might slice based on need
@@ -102,7 +104,7 @@ export function ProjectSection({ isHomepage = true }: { isHomepage?: boolean }) 
   );
 }
 
-function ProjectCard({ project }: { project: unknown }) {
+function ProjectCard({ project }: { project: ProjectItem }) {
   const [isPlaying, setIsPlaying] = useState(false);
 
   return (

@@ -8,6 +8,8 @@ import {
 import { SectionWrapper } from "@/components/SectionWrapper";
 import { ImageGallery } from "@/components/ImageGallery";
 
+export const dynamicParams = true;
+
 export async function generateStaticParams() {
   const products = await getCatalogProducts();
   return products.map((product) => ({ slug: product.slug }));

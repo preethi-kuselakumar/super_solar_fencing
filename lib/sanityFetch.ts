@@ -64,7 +64,7 @@ export const getFeaturedProducts = unstable_cache(
 
 export const getProductBySlug = unstable_cache(
   fetchProductBySlug,
-  ["sanity-product-by-slug"],
+  ["sanity-product-by-slug-v2"],
   {
     revalidate: SANITY_REVALIDATE_SECONDS,
     tags: ["sanity", "sanity:products"],
