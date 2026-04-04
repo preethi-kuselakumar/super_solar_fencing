@@ -1,13 +1,10 @@
 import ProductsCatalogClient from "@/app/products/ProductsCatalogClient";
-import { getCatalogCategories, getCatalogProducts } from "@/lib/catalogData";
+import { getCatalogProducts } from "@/lib/catalogData";
 
 export default async function ProductsPage() {
-  const [products, categories] = await Promise.all([
-    getCatalogProducts(),
-    getCatalogCategories(),
-  ]);
+  const products = await getCatalogProducts();
 
   return (
-    <ProductsCatalogClient initialProducts={products} categories={categories} />
+    <ProductsCatalogClient initialProducts={products} />
   );
 }

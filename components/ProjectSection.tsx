@@ -102,7 +102,7 @@ export function ProjectSection({ isHomepage = true }: { isHomepage?: boolean }) 
   );
 }
 
-function ProjectCard({ project }: { project: unknown }) {
+function ProjectCard({ project }: { project: any }) {
   const [isPlaying, setIsPlaying] = useState(false);
 
   return (

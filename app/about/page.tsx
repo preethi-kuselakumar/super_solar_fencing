@@ -1,34 +1,15 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ShieldCheck, Zap, Sun, Shield } from "lucide-react";
+import { PageHeader } from "@/components/PageHeader";
 
 export default function AboutPage() {
   return (
     <>
-      {/* Hero Header */}
-      <section 
-        className="relative flex min-h-[40vh] md:min-h-[50vh] w-full items-center justify-center bg-[#1C1C1C] overflow-hidden"
-        style={{
-          backgroundImage: "url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmgQjFxO-JLTwoTkdVhjMKM5tV6cY4V82NTg&s')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat"
-        }}
-      >
-        {/* Background Overlay */}
-        <div className="absolute inset-0 bg-black/60 z-0" />
-        
-        <div className="relative z-10 w-full text-center px-4">
-          <h1 className="text-4xl md:text-5xl md:text-[60px] font-extrabold text-white leading-tight tracking-tight mb-4">
-            About Us
-          </h1>
-          <div className="flex items-center justify-center space-x-2 text-[13px] font-bold tracking-widest uppercase text-white">
-            <Link href="/" className="hover:text-[#FF7A49] transition-colors">Home</Link>
-            <span className="text-[#FF7A49]">/</span>
-            <span className="text-[#FF7A49]">About</span>
-          </div>
-        </div>
-      </section>
+      <PageHeader 
+        title="About Us" 
+        breadcrumbs={[{ label: "Home", href: "/" }, { label: "About" }]} 
+      />
 
       {/* Our Expertise (Based on Home Page About) */}
       <section className="bg-[#FAF7F2] py-24 px-4 sm:px-6 lg:px-8">

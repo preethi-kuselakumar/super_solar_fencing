@@ -1,4 +1,5 @@
 "use client";
+import { PageHeader } from "@/components/PageHeader";
 import { useState } from "react";
 import { SectionWrapper } from "@/components/SectionWrapper";
 import { MapPin, Phone, Mail, Send, Loader2, CheckCircle2 } from "lucide-react";
@@ -18,17 +19,23 @@ export default function ContactPage() {
   };
 
   return (
-    <main className="pt-24 pb-16 min-h-screen bg-slate-50">
-      <SectionWrapper>
-        {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h1 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-6 tracking-tight">
-            Get in <span className="text-emerald-600">Touch</span>
-          </h1>
-          <p className="text-lg text-slate-600 leading-relaxed">
-            Have questions about our products or need a custom perimeter security assessment? Our team of experts is ready to assist you.
-          </p>
-        </div>
+    <main className="bg-[#FAF7F2] min-h-screen">
+      <PageHeader 
+        title="Contact Us" 
+        breadcrumbs={[{ label: "Home", href: "/" }, { label: "Contact" }]} 
+      />
+      <div className="pt-24 pb-16">
+        <SectionWrapper>
+          {/* Header */}
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <span className="text-[#FF7A49] font-bold text-[13px] tracking-[0.15em] uppercase mb-4 block">Get In Touch</span>
+            <h2 className="text-[40px] md:text-[46px] font-extrabold text-[#1C2028] leading-[1.15] tracking-tight mb-6">
+              We're Here to Help
+            </h2>
+            <p className="text-[#969696] text-[15px] leading-relaxed">
+              Have questions about our products or need a custom perimeter security assessment? Our team of experts is ready to assist you.
+            </p>
+          </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 max-w-6xl mx-auto">
           
@@ -152,6 +159,7 @@ export default function ContactPage() {
           </div>
         </div>
       </SectionWrapper>
+      </div>
     </main>
   );
 }

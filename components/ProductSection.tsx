@@ -29,7 +29,7 @@ export function ProductSection() {
   );
 }
 
-function ProductCard({ product }: { product: unknown }) {
+function ProductCard({ product }: { product: any }) {
   // Use a sensible default if the image is just a placeholder path without actual image
   const defaultImage = "https://images.unsplash.com/photo-1509391366360-120953a17e1e?q=80&w=800&auto=format&fit=crop";
   const imageSrc = product.images?.[0] && product.images[0] !== "/placeholder.jpg" 
@@ -47,7 +47,7 @@ function ProductCard({ product }: { product: unknown }) {
           className="object-cover transition-transform duration-700 group-hover:scale-105"
         />
         <div className="absolute top-4 right-4 bg-[#FF7A49] text-white text-sm font-bold px-3 py-1 rounded-full shadow-md z-10">
-          ${product.price}
+          ₹{product.price}
         </div>
       </div>
 

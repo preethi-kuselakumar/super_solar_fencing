@@ -87,7 +87,9 @@ export type CatalogProduct = {
   features: string[];
   specifications: Specification[];
   images: string[];
-  price: number;
+  price?: number;
+  offer?: string;
+  varieties?: string[];
 };
 
 export type CatalogProject = {

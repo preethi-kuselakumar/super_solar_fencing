@@ -132,7 +132,7 @@ export function ServiceSection() {
   );
 }
 
-function ServiceCard({ service }: { service: unknown }) {
+function ServiceCard({ service }: { service: any }) {
   return (
     <div className="group relative h-[450px] w-full overflow-hidden cursor-pointer">
       {/* Background Image */}
