@@ -43,7 +43,7 @@ export default async function ProductDetailsPage({
     .slice(0, 3);
 
   return (
-    <main className="pt-[100px] lg:pt-[110px] pb-16 min-h-screen bg-[#F5F5F5]">
+    <main className="pt-6 pb-16 min-h-screen bg-[#F5F5F5]">
       <SectionWrapper>
         <Link href="/products" className="inline-flex items-center text-slate-500 hover:text-[#639922] mb-4 transition font-semibold group uppercase text-sm tracking-wider">
           <ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform" />
