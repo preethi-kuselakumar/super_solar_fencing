@@ -11,7 +11,7 @@ export default function Home() {
     <>
       {/* Hero Section */}
       <section 
-        className="relative flex min-h-[85vh] w-full items-center justify-start bg-[#1C1C1C] overflow-hidden"
+        className="relative flex min-h-[85vh] w-full items-center justify-start bg-[#2C2C2A] overflow-hidden"
         style={{
           backgroundImage: "url('https://i.ytimg.com/vi/e59oaLBmi64/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLARKqzi0hlUZzV7Ucb0Oxelc-EiOA')",
           backgroundSize: "cover",
@@ -33,7 +33,7 @@ export default function Home() {
             <div className="pt-2">
               <Link
                 href="/about"
-                className="inline-block rounded-full bg-[#FF7A49] px-8 py-3.5 text-sm font-medium text-white hover:bg-[#e66a3d] transition-all"
+                className="inline-block rounded-full bg-[#639922] px-8 py-3.5 text-sm font-medium text-white hover:bg-[#e66a3d] transition-all"
               >
                 Read More
               </Link>
@@ -43,28 +43,28 @@ export default function Home() {
 
         {/* Bottom Slider Indicators */}
         <div className="absolute bottom-8 left-0 right-0 z-10 flex justify-center items-center space-x-3">
-          <div className="h-1 w-10 bg-[#FF7A49] rounded-full"></div>
+          <div className="h-1 w-10 bg-[#639922] rounded-full"></div>
           <div className="h-1 w-10 bg-white/40 rounded-full cursor-pointer hover:bg-white/60 transition-colors"></div>
           <div className="h-1 w-10 bg-white/40 rounded-full cursor-pointer hover:bg-white/60 transition-colors"></div>
         </div>
       </section>
 
       {/* Stats & About Section */}
-      <section className="bg-[#FAF7F2] py-24 px-4 sm:px-6 lg:px-8">
+      <section className="bg-[#F5F5F5] py-24 px-4 sm:px-6 lg:px-8">
         <div className="max-w-[1200px] mx-auto">
           {/* Stats Row */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-24 max-w-4xl mx-auto text-center">
             <div className="flex flex-col items-center justify-center space-y-3">
-              <span className="text-5xl font-extrabold text-[#FF7A49]">50+</span>
-              <span className="text-xs font-bold text-gray-500 tracking-widest uppercase">Happy Customers</span>
+              <span className="text-5xl font-extrabold text-[#639922]">50+</span>
+              <span className="text-xs font-bold text-[#639922] tracking-widest uppercase">Happy Customers</span>
             </div>
             <div className="flex flex-col items-center justify-center space-y-3">
-              <span className="text-5xl font-extrabold text-[#FF7A49]">30+</span>
-              <span className="text-xs font-bold text-gray-500 tracking-widest uppercase">Project Done</span>
+              <span className="text-5xl font-extrabold text-[#639922]">30+</span>
+              <span className="text-xs font-bold text-[#639922] tracking-widest uppercase">Project Done</span>
             </div>
             <div className="flex flex-col items-center justify-center space-y-3">
-              <span className="text-5xl font-extrabold text-[#FF7A49]">10+</span>
-              <span className="text-xs font-bold text-gray-500 tracking-widest uppercase">Products</span>
+              <span className="text-5xl font-extrabold text-[#639922]">10+</span>
+              <span className="text-xs font-bold text-[#639922] tracking-widest uppercase">Products</span>
             </div>
           </div>
 
@@ -88,8 +88,8 @@ export default function Home() {
 
             {/* Right Text Side */}
             <div className="space-y-6">
-              <span className="text-[#FF7A49] font-bold text-[13px] tracking-widest uppercase mb-4 block">About Us</span>
-              <h2 className="text-[40px] md:text-5xl font-extrabold text-[#1C2028] leading-[1.15] tracking-tight">
+              <span className="text-[#639922] font-bold text-[13px] tracking-widest uppercase mb-4 block">About Us</span>
+              <h2 className="text-[40px] md:text-5xl font-extrabold text-[#2C2C2A] leading-[1.15] tracking-tight">
                 Among The Top 10 Solar & <br className="hidden md:block" />
                 Renewable Energy <br className="hidden md:block" />
                 Industry
@@ -100,7 +100,7 @@ export default function Home() {
               <div className="pt-6">
                 <Link
                   href="/about"
-                  className="inline-block rounded-full bg-[#FF7A49] px-9 py-3.5 text-sm font-medium text-white hover:bg-[#e66a3d] transition-all"
+                  className="inline-block rounded-full bg-[#639922] px-9 py-3.5 text-sm font-medium text-white hover:bg-[#e66a3d] transition-all"
                 >
                   Find Out More
                 </Link>
@@ -114,12 +114,12 @@ export default function Home() {
       <ProductSection />
 
       {/* Motive / Why Choose Us Section */}
-      <section className="bg-[#FAF7F2] py-24 px-4 sm:px-6 lg:px-8">
+      <section className="bg-[#F5F5F5] py-24 px-4 sm:px-6 lg:px-8">
         <div className="max-w-[1200px] mx-auto">
           {/* Header Content */}
           <div className="max-w-3xl mb-16">
-            <span className="text-[#FF7A49] font-bold text-[13px] tracking-[0.2em] uppercase mb-4 block">Why Choose Us!</span>
-            <h2 className="text-[40px] md:text-[44px] font-extrabold text-[#1C2028] leading-[1.15] tracking-tight mb-6">
+            <span className="text-[#639922] font-bold text-[13px] tracking-[0.2em] uppercase mb-4 block">Why Choose Us!</span>
+            <h2 className="text-[40px] md:text-[44px] font-extrabold text-[#2C2C2A] leading-[1.15] tracking-tight mb-6">
               Our Motive To Change World
             </h2>
             <p className="text-[#969696] text-[15px] leading-relaxed max-w-2xl">
@@ -144,7 +144,7 @@ export default function Home() {
                   {item.num}
                 </span>
                 {/* Text Beside */}
-                <span className="text-[#1C2028] font-bold text-[13px] tracking-widest uppercase whitespace-pre-line leading-[1.6] -ml-4 z-10 transition-colors duration-300 group-hover:text-[#FF7A49]">
+                <span className="text-[#2C2C2A] font-bold text-[13px] tracking-widest uppercase whitespace-pre-line leading-[1.6] -ml-4 z-10 transition-colors duration-300 group-hover:text-[#639922]">
                   {item.text}
                 </span>
               </div>

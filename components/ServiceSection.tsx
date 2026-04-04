@@ -16,56 +16,56 @@ const serviceData = [
     title: "Solar Panels",
     desc: "Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam.",
     image: "https://images.unsplash.com/photo-1509391366360-120953a17e1e?q=80&w=800&auto=format&fit=crop",
-    link: "/products"
+    link: "/services"
   },
   {
     id: 2,
     title: "Solar Power Systems",
     desc: "Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam.",
     image: "https://tiimg.tistatic.com/fp/1/008/150/iron-solar-fencing-for-security-purposes-output-voltage-5-10-kva-321.jpg",
-    link: "/products"
+    link: "/services"
   },
   {
     id: 3,
     title: "Hydropower Plants",
     desc: "Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam.",
     image: "https://images.unsplash.com/photo-1466611653911-95081537e5b7?q=80&w=800&auto=format&fit=crop",
-    link: "/products"
+    link: "/services"
   },
   {
     id: 4,
     title: "Wind Turbines",
     desc: "Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam.",
     image: "https://images.unsplash.com/photo-1466611653911-95081537e5b7?q=80&w=800&auto=format&fit=crop",
-    link: "/products"
+    link: "/services"
   },
   {
     id: 5,
     title: "Maintenance Service",
     desc: "Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam.",
     image: "https://images.unsplash.com/photo-1508514177221-188b1c77eca2?q=80&w=800&auto=format&fit=crop",
-    link: "/products"
+    link: "/services"
   },
   {
     id: 6,
     title: "Battery Storage",
     desc: "Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam.",
     image: "https://images.unsplash.com/photo-1509391366360-120953a17e1e?q=80&w=800&auto=format&fit=crop",
-    link: "/products"
+    link: "/services"
   },
   {
     id: 7,
     title: "Eco Consulting",
     desc: "Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam.",
     image: "https://tiimg.tistatic.com/fp/1/008/150/iron-solar-fencing-for-security-purposes-output-voltage-5-10-kva-321.jpg",
-    link: "/products"
+    link: "/services"
   },
   {
     id: 8,
     title: "Installation Setup",
     desc: "Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam.",
     image: "https://images.unsplash.com/photo-1466611653911-95081537e5b7?q=80&w=800&auto=format&fit=crop",
-    link: "/products"
+    link: "/services"
   }
 ];
 
@@ -75,11 +75,11 @@ export function ServiceSection() {
   const isSlider = serviceData.length > 4;
 
   return (
-    <section className="bg-[#FAF7F2] pb-24 h-full w-full">
+    <section className="bg-[#F5F5F5] pb-24 h-full w-full">
       {/* Header */}
       <div className="text-center max-w-2xl mx-auto mb-16 px-4">
-        <span className="text-[#FF7A49] font-bold text-[13px] tracking-widest uppercase mb-4 block">Our Services</span>
-        <h2 className="text-[40px] md:text-5xl font-extrabold text-[#1C2028] leading-[1.15] tracking-tight">
+        <span className="text-[#639922] font-bold text-[13px] tracking-widest uppercase mb-4 block">Our Services</span>
+        <h2 className="text-[40px] md:text-5xl font-extrabold text-[#2C2C2A] leading-[1.15] tracking-tight">
           Best Services <br /> From Us
         </h2>
       </div>
@@ -115,10 +115,10 @@ export function ServiceSection() {
             </Swiper>
             
             {/* Custom Navigation buttons */}
-            <button className="swiper-prev-btn absolute top-1/2 left-4 z-10 -translate-y-1/2 w-12 h-12 bg-white/20 hover:bg-[#FF7A49] backdrop-blur-md text-white rounded-full flex items-center justify-center opacity-0 group-hover/slider:opacity-100 transition-all duration-300 pointer-events-auto">
+            <button className="swiper-prev-btn absolute top-1/2 left-4 z-10 -translate-y-1/2 w-12 h-12 bg-white/20 hover:bg-[#639922] backdrop-blur-md text-white rounded-full flex items-center justify-center opacity-0 group-hover/slider:opacity-100 transition-all duration-300 pointer-events-auto">
               <ChevronLeft className="w-6 h-6" />
             </button>
-            <button className="swiper-next-btn absolute top-1/2 right-4 z-10 -translate-y-1/2 w-12 h-12 bg-white/20 hover:bg-[#FF7A49] backdrop-blur-md text-white rounded-full flex items-center justify-center opacity-0 group-hover/slider:opacity-100 transition-all duration-300 pointer-events-auto">
+            <button className="swiper-next-btn absolute top-1/2 right-4 z-10 -translate-y-1/2 w-12 h-12 bg-white/20 hover:bg-[#639922] backdrop-blur-md text-white rounded-full flex items-center justify-center opacity-0 group-hover/slider:opacity-100 transition-all duration-300 pointer-events-auto">
               <ChevronRight className="w-6 h-6" />
             </button>
           </div>
@@ -146,10 +146,10 @@ function ServiceCard({ service }: { service: ServiceItem }) {
       />
       
       {/* Primary Dark Overlay (Default State) */}
-      <div className="absolute inset-0 bg-[#1C2028]/60 transition-opacity duration-500 group-hover:opacity-0 pointer-events-none" />
+      <div className="absolute inset-0 bg-[#2C2C2A]/60 transition-opacity duration-500 group-hover:opacity-0 pointer-events-none" />
 
       {/* Primary Orange Overlay (Hover State) */}
-      <div className="absolute inset-0 bg-[#FF7A49]/75 opacity-0 transition-opacity duration-500 group-hover:opacity-100 pointer-events-none" />
+      <div className="absolute inset-0 bg-[#639922]/75 opacity-0 transition-opacity duration-500 group-hover:opacity-100 pointer-events-none" />
       
       {/* Content */}
       <div className="absolute inset-0 flex flex-col justify-end p-8 z-10 pointer-events-none">

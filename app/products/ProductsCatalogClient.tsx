@@ -34,7 +34,7 @@ export default function ProductsCatalogClient({
   );
 
   return (
-    <main className="bg-[#FAF7F2] min-h-screen">
+    <main className="bg-[#F5F5F5] min-h-screen">
       <PageHeader
         title="Our Products"
         breadcrumbs={[{ label: "Home", href: "/" }, { label: "Products" }]}
@@ -43,7 +43,7 @@ export default function ProductsCatalogClient({
         <SectionWrapper>
           <div className="mb-12 text-center md:text-left mx-auto md:mx-0 flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
             <div className="max-w-3xl">
-              <span className="text-[#FF7A49] font-bold text-[13px] tracking-[0.15em] uppercase mb-4 block">
+              <span className="text-[#639922] font-bold text-[13px] tracking-[0.15em] uppercase mb-4 block">
                 Product Catalog
               </span>
               <p className="text-lg text-slate-600 leading-relaxed">
@@ -61,7 +61,7 @@ export default function ProductsCatalogClient({
                 type="search"
                 name="search"
                 id="search"
-                className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-[#FF7A49] focus:border-[#FF7A49] sm:text-sm transition-colors"
+                className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-[#5F5E5A] focus:border-[#639922] sm:text-sm transition-colors"
                 placeholder="Search products..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
@@ -69,7 +69,7 @@ export default function ProductsCatalogClient({
             </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mt-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-6">
             {isLoading ? (
               Array(8)
                 .fill(0)
@@ -92,7 +92,7 @@ export default function ProductsCatalogClient({
                 </p>
                 <button
                   onClick={() => setSearchQuery("")}
-                  className="mt-6 px-6 py-2 bg-[#FF7A49] text-white rounded-full font-medium hover:bg-[#e66a3d] transition"
+                  className="mt-6 px-6 py-2 bg-[#639922] text-white rounded-full font-medium hover:bg-[#e66a3d] transition"
                 >
                   Clear Search
                 </button>

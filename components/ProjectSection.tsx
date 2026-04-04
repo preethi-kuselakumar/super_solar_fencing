@@ -83,12 +83,12 @@ export function ProjectSection({ isHomepage = true, projects }: ProjectSectionPr
     projects && projects.length > 0 ? projects : projectsData;
 
   return (
-    <section className="bg-[#FAF7F2] pb-24 w-full overflow-hidden">
+    <section className="bg-[#F5F5F5] pb-24 w-full overflow-hidden">
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-14">
-          <span className="text-[#FF7A49] font-bold text-[13px] tracking-[0.15em] uppercase mb-4 block">Our Projects</span>
-          <h2 className="text-[40px] md:text-[46px] font-extrabold text-[#1C2028] leading-[1.15] tracking-tight">
+          <span className="text-[#639922] font-bold text-[13px] tracking-[0.15em] uppercase mb-4 block">Our Projects</span>
+          <h2 className="text-[40px] md:text-[46px] font-extrabold text-[#2C2C2A] leading-[1.15] tracking-tight">
             View Our Formidable <br /> Solar Projects
           </h2>
         </div>
@@ -108,8 +108,8 @@ export function ProjectSection({ isHomepage = true, projects }: ProjectSectionPr
           {/* Optional bottom fade/scroll indicator when scrolling is available vertically */}
           {isHomepage && displayProjects.length > 6 && (
             <div className="absolute bottom-2 left-1/2 -translate-x-1/2 opacity-70 flex flex-col items-center justify-center animate-bounce pointer-events-none">
-              <span className="text-[11px] font-bold tracking-widest text-[#FF7A49] uppercase mb-1">Scroll Down</span>
-              <MousePointer2 className="w-5 h-5 text-[#FF7A49]" />
+              <span className="text-[11px] font-bold tracking-widest text-[#639922] uppercase mb-1">Scroll Down</span>
+              <MousePointer2 className="w-5 h-5 text-[#639922]" />
             </div>
           )}
         </div>
@@ -151,7 +151,7 @@ function ProjectCard({ project }: { project: ProjectItem }) {
               <div className="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/10 transition-colors">
                 <button 
                   onClick={() => setIsPlaying(true)}
-                  className="w-16 h-16 bg-[#FF7A49] hover:bg-[#e66a3d] rounded-full flex items-center justify-center transition-all scale-90 group-hover:scale-100 shadow-xl cursor-pointer z-20 pointer-events-auto"
+                  className="w-16 h-16 bg-[#639922] hover:bg-[#e66a3d] rounded-full flex items-center justify-center transition-all scale-90 group-hover:scale-100 shadow-xl cursor-pointer z-20 pointer-events-auto"
                 >
                   <Play className="w-6 h-6 text-white ml-1" fill="currentColor" />
                 </button>
@@ -163,10 +163,10 @@ function ProjectCard({ project }: { project: ProjectItem }) {
 
       {/* Text Info */}
       <div className="flex flex-col px-1 pointer-events-none">
-        <span className="text-[#FF7A49] font-bold text-[11px] tracking-[0.15em] uppercase mb-2 block transition-colors group-hover:text-[#e66a3d]">
+        <span className="text-[#639922] font-bold text-[11px] tracking-[0.15em] uppercase mb-2 block transition-colors group-hover:text-[#e66a3d]">
           {project.category}
         </span>
-        <h3 className="text-[22px] font-bold text-[#1C2028] tracking-tight group-hover:text-[#FF7A49] transition-colors leading-snug">
+        <h3 className="text-[22px] font-bold text-[#2C2C2A] tracking-tight group-hover:text-[#639922] transition-colors leading-snug">
           {project.title}
         </h3>
         {project.description ? (

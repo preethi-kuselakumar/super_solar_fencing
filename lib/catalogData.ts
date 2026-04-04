@@ -1,6 +1,5 @@
 import "server-only";
 
-import { productData, projectData } from "@/lib/dummyData";
 import { urlFor } from "@/lib/imageUrl";
 import {
   getAboutPage,
@@ -16,34 +15,6 @@ import type {
   Product as SanityProduct,
   Project as SanityProject,
 } from "@/lib/types";
-
-const dummyProducts: CatalogProduct[] = productData.map((product) => ({
-  id: product.id,
-  name: product.name,
-  slug: product.slug,
-  category: product.category,
-  shortDescription: product.shortDescription,
-  description: product.description,
-  features: product.features,
-  specifications: product.specifications,
-  images: product.images,
-  price: product.price,
-}));
-
-const dummyProjects: CatalogProject[] = projectData.map((project) => ({
-  id: project.id,
-  title: project.title,
-  category: project.category,
-  image: project.image,
-}));
-
-const fallbackAboutPageContent: AboutPageContent = {
-  title: "About Super Solar Fencing",
-  content:
-    "We are industry leaders in designing, engineering, and manufacturing high-performance solar-powered perimeter security solutions for agricultural, industrial, and residential applications.",
-  image:
-    "https://tiimg.tistatic.com/fp/1/008/150/iron-solar-fencing-for-security-purposes-output-voltage-5-10-kva-321.jpg",
-};
 
 function getImageUrl(image: SanityProduct["mainImage"]): string | null {
   if (!image) {
@@ -69,10 +40,7 @@ function getProjectImageUrl(image: SanityProject["images"][number] | undefined) 
   }
 }
 
-function mapSanityProductToCatalog(
-  product: SanityProduct,
-  fallback?: CatalogProduct,
-): CatalogProduct {
+function mapSanityProductToCatalog(product: SanityProduct): CatalogProduct {
   const mainImageUrl = getImageUrl(product.mainImage ?? null);
   const galleryUrls = (product.gallery ?? [])
     .map((image) => getImageUrl(image))
@@ -82,128 +50,75 @@ function mapSanityProductToCatalog(
     (image): image is string => Boolean(image),
   );
 
-  const shortDescription =
-    product.shortDescription?.trim() ||
-    fallback?.shortDescription ||
-    product.description.slice(0, 160);
+  const shortDescription = product.shortDescription?.trim() || product.description?.slice(0, 160) || "";
 
   return {
     id: product._id,
     name: product.name,
     slug: product.slug,
-    category: product.category?.title || fallback?.category || "Uncategorized",
+    category: product.category?.title || "Uncategorized",
     shortDescription,
-    description: product.description,
-    features: product.features ?? fallback?.features ?? [],
-    specifications: product.specifications ?? fallback?.specifications ?? [],
-    images: images.length > 0 ? images : fallback?.images ?? ["/placeholder.jpg"],
-    // Price is currently not modeled in Sanity schema, so we preserve dummy fallback pricing.
-    price: fallback?.price ?? 0,
+    description: product.description || "",
+    features: product.features ?? [],
+    specifications: product.specifications ?? [],
+    images: images.length > 0 ? images : ["/placeholder.jpg"],
+    price: undefined // CMS has no price field; dummy data stripped.
   };
 }
 
 export async function getCatalogProducts(): Promise<CatalogProduct[]> {
   const sanityProducts = await getProducts();
-
-  if (sanityProducts.length === 0) {
-    return dummyProducts;
-  }
-
-  const fallbackBySlug = new Map(dummyProducts.map((item) => [item.slug, item]));
-
-  return sanityProducts.map((product) =>
-    mapSanityProductToCatalog(product, fallbackBySlug.get(product.slug)),
-  );
+  return sanityProducts.map(mapSanityProductToCatalog);
 }
 
-export async function getFeaturedCatalogProducts(
-  limit = 6,
-): Promise<CatalogProduct[]> {
+export async function getFeaturedCatalogProducts(limit = 6): Promise<CatalogProduct[]> {
   const safeLimit = Math.max(1, limit);
   const featuredProducts = await getFeaturedProducts();
-
-  if (featuredProducts.length === 0) {
-    return dummyProducts.slice(0, safeLimit);
-  }
-
-  const fallbackBySlug = new Map(dummyProducts.map((item) => [item.slug, item]));
-
-  return featuredProducts
-    .map((product) =>
-      mapSanityProductToCatalog(product, fallbackBySlug.get(product.slug)),
-    )
-    .slice(0, safeLimit);
+  return featuredProducts.map(mapSanityProductToCatalog).slice(0, safeLimit);
 }
 
-export async function getCatalogProductBySlug(
-  slug: string,
-): Promise<CatalogProduct | null> {
+export async function getCatalogProductBySlug(slug: string): Promise<CatalogProduct | null> {
   const normalizedSlug = slug.trim().toLowerCase();
-
-  if (!normalizedSlug) {
-    return null;
-  }
-
-  const fallback = dummyProducts.find(
-    (product) => product.slug.toLowerCase() === normalizedSlug,
-  );
+  if (!normalizedSlug) return null;
 
   const sanityProduct = await getProductBySlug(normalizedSlug);
-
-  if (sanityProduct) {
-    return mapSanityProductToCatalog(sanityProduct, fallback);
-  }
-
-  return fallback ?? null;
+  return sanityProduct ? mapSanityProductToCatalog(sanityProduct) : null;
 }
 
 export async function getCatalogCategories(): Promise<string[]> {
   const products = await getCatalogProducts();
-
   const categorySet = new Set(
     products
       .map((product) => product.category)
       .filter((category) => category && category.trim().length > 0),
   );
-
   return ["All", ...Array.from(categorySet).sort((a, b) => a.localeCompare(b))];
 }
 
-function mapSanityProjectToCatalog(
-  project: SanityProject,
-  fallback?: CatalogProject,
-): CatalogProject {
+function mapSanityProjectToCatalog(project: SanityProject): CatalogProject {
   const mainImage = getProjectImageUrl(project.images?.[0]);
 
   return {
     id: project._id,
     title: project.title,
-    category: fallback?.category || "Installation",
-    image: mainImage || fallback?.image || "/placeholder-project.jpg",
+    category: "Installation",
+    image: mainImage || "/placeholder-project.jpg",
     description: project.description,
   };
 }
 
 export async function getCatalogProjects(): Promise<CatalogProject[]> {
   const projects = await getProjects();
-
-  if (projects.length === 0) {
-    return dummyProjects;
-  }
-
-  const fallbackByTitle = new Map(
-    dummyProjects.map((project) => [project.title.toLowerCase(), project]),
-  );
-
-  return projects.map((project) =>
-    mapSanityProjectToCatalog(
-      project,
-      fallbackByTitle.get(project.title.toLowerCase()),
-    ),
-  );
+  return projects.map(mapSanityProjectToCatalog);
 }
 
 export async function getAboutPageContent(): Promise<AboutPageContent> {
+  const fallbackAboutPageContent: AboutPageContent = {
+    title: "About Super Solar Fencing",
+    content: "We are industry leaders in designing, engineering, and manufacturing high-performance solar-powered perimeter security solutions for agricultural, industrial, and residential applications.",
+    image: "/placeholder.jpg",
+  };
+
   const aboutPage = await getAboutPage();
 
   if (!aboutPage) {

@@ -10,7 +10,7 @@ interface PageHeaderProps {
 
 export function PageHeader({ title, breadcrumbs }: PageHeaderProps) {
   return (
-    <section className="relative flex flex-col items-center justify-center bg-[#1C2028] w-full overflow-hidden pt-[0px] lg:pt-[104px] pb-8 md:pb-10 border-b-[4px] border-[#FF7A49]">
+    <section className="relative flex flex-col items-center justify-center bg-[#2C2C2A] w-full overflow-hidden pt-[0px] lg:pt-[104px] pb-8 md:pb-10 border-b-[4px] border-black">
       
       {/* Clean, Industrial Background Pattern */}
       <div 
@@ -34,17 +34,17 @@ export function PageHeader({ title, breadcrumbs }: PageHeaderProps) {
             return (
               <span key={crumb.label} className="flex items-center">
                 {crumb.href ? (
-                  <Link href={crumb.href} className="text-gray-300 hover:text-[#FF7A49] transition-colors duration-300">
+                  <Link href={crumb.href} className="text-gray-300 hover:text-[#639922] transition-colors duration-300">
                     {crumb.label}
                   </Link>
                 ) : (
-                  <span className={isLast ? "text-[#FF7A49]" : "text-gray-300"}>
+                  <span className={isLast ? "text-[#639922]" : "text-gray-300"}>
                     {crumb.label}
                   </span>
                 )}
                 
                 {!isLast && (
-                  <span className="text-[#FF7A49] mx-4 select-none">-</span>
+                  <span className="text-[#639922] mx-4 select-none">-</span>
                 )}
               </span>
             );

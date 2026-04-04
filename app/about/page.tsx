@@ -17,13 +17,13 @@ export default async function AboutPage() {
       />
 
       {/* Our Expertise (Based on Home Page About) */}
-      <section className="bg-[#FAF7F2] py-24 px-4 sm:px-6 lg:px-8">
+      <section className="bg-[#F5F5F5] py-24 px-4 sm:px-6 lg:px-8">
         <div className="max-w-[1200px] mx-auto grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
           
           {/* Left Text Side */}
           <div className="space-y-6 order-2 lg:order-1">
-            <span className="text-[#FF7A49] font-bold text-[13px] tracking-[0.2em] uppercase mb-4 block">Our Expertise</span>
-            <h2 className="text-[36px] md:text-[44px] font-extrabold text-[#1C2028] leading-[1.15] tracking-tight">
+            <span className="text-[#639922] font-bold text-[13px] tracking-[0.2em] uppercase mb-4 block">Our Expertise</span>
+            <h2 className="text-[36px] md:text-[44px] font-extrabold text-[#2C2C2A] leading-[1.15] tracking-tight">
               {aboutContent.title || "Pioneering the Future of Clean Energy & Security"}
             </h2>
             <p className="text-[#969696] text-[15px] leading-relaxed max-w-lg mt-6 mb-6">
@@ -34,11 +34,11 @@ export default async function AboutPage() {
             </p>
             
             <div className="flex items-center space-x-4 pt-4">
-              <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-sm text-[#FF7A49]">
+              <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-sm text-[#639922]">
                 <ShieldCheck className="w-7 h-7" />
               </div>
               <div>
-                <h4 className="text-[18px] font-bold text-[#1C2028]">Verified Quality</h4>
+                <h4 className="text-[18px] font-bold text-[#2C2C2A]">Verified Quality</h4>
                 <p className="text-[#969696] text-[14px]">Certified by Top Industry Standards</p>
               </div>
             </div>
@@ -66,8 +66,8 @@ export default async function AboutPage() {
         <div className="max-w-[1200px] mx-auto">
           {/* Header Content */}
           <div className="max-w-3xl mb-16 text-center mx-auto">
-            <span className="text-[#FF7A49] font-bold text-[13px] tracking-[0.2em] uppercase mb-4 block">Innovative Approaches</span>
-            <h2 className="text-[36px] md:text-[44px] font-extrabold text-[#1C2028] leading-[1.15] tracking-tight mb-6">
+            <span className="text-[#639922] font-bold text-[13px] tracking-[0.2em] uppercase mb-4 block">Innovative Approaches</span>
+            <h2 className="text-[36px] md:text-[44px] font-extrabold text-[#2C2C2A] leading-[1.15] tracking-tight mb-6">
               Our Solutions to Global Challenges
             </h2>
             <p className="text-[#969696] text-[15px] leading-relaxed max-w-2xl mx-auto">
@@ -78,33 +78,33 @@ export default async function AboutPage() {
           {/* Features Grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Approach 1 */}
-            <div className="bg-[#FAF7F2] p-10 rounded-sm border border-[#EAE6DF] hover:shadow-lg transition-all group">
-              <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center text-[#FF7A49] mb-6 shadow-sm group-hover:bg-[#FF7A49] group-hover:text-white transition-colors">
+            <div className="bg-[#F5F5F5] p-10 rounded-sm border border-[#EAE6DF] hover:shadow-lg transition-all group">
+              <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center text-[#639922] mb-6 shadow-sm group-hover:bg-[#639922] group-hover:text-white transition-colors">
                 <Sun className="w-8 h-8" />
               </div>
-              <h3 className="text-[#1C2028] font-bold text-[22px] mb-4">Solar Advancements</h3>
+              <h3 className="text-[#2C2C2A] font-bold text-[22px] mb-4">Solar Advancements</h3>
               <p className="text-[#969696] text-[15px] leading-relaxed">
                 Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam justo. Kasd rebum ipsum et diam justo clita et kasd rebum sea elitr.
               </p>
             </div>
 
             {/* Approach 2 */}
-            <div className="bg-[#FAF7F2] p-10 rounded-sm border border-[#EAE6DF] hover:shadow-lg transition-all group">
-              <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center text-[#FF7A49] mb-6 shadow-sm group-hover:bg-[#FF7A49] group-hover:text-white transition-colors">
+            <div className="bg-[#F5F5F5] p-10 rounded-sm border border-[#EAE6DF] hover:shadow-lg transition-all group">
+              <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center text-[#639922] mb-6 shadow-sm group-hover:bg-[#639922] group-hover:text-white transition-colors">
                 <Zap className="w-8 h-8" />
               </div>
-              <h3 className="text-[#1C2028] font-bold text-[22px] mb-4">Smart Energizers</h3>
+              <h3 className="text-[#2C2C2A] font-bold text-[22px] mb-4">Smart Energizers</h3>
               <p className="text-[#969696] text-[15px] leading-relaxed">
                 Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam justo. Kasd rebum ipsum et diam justo clita et kasd rebum sea elitr.
               </p>
             </div>
 
             {/* Approach 3 */}
-            <div className="bg-[#FAF7F2] p-10 rounded-sm border border-[#EAE6DF] hover:shadow-lg transition-all group">
-              <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center text-[#FF7A49] mb-6 shadow-sm group-hover:bg-[#FF7A49] group-hover:text-white transition-colors">
+            <div className="bg-[#F5F5F5] p-10 rounded-sm border border-[#EAE6DF] hover:shadow-lg transition-all group">
+              <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center text-[#639922] mb-6 shadow-sm group-hover:bg-[#639922] group-hover:text-white transition-colors">
                 <Shield className="w-8 h-8" />
               </div>
-              <h3 className="text-[#1C2028] font-bold text-[22px] mb-4">Perimeter Safety</h3>
+              <h3 className="text-[#2C2C2A] font-bold text-[22px] mb-4">Perimeter Safety</h3>
               <p className="text-[#969696] text-[15px] leading-relaxed">
                 Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam justo. Kasd rebum ipsum et diam justo clita et kasd rebum sea elitr.
               </p>

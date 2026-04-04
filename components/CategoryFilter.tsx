@@ -17,8 +17,8 @@ export function CategoryFilter({ categories, activeCategory, onSelect }: Categor
           className={cn(
             "px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-200 whitespace-nowrap",
             activeCategory === cat
-              ? "bg-emerald-600 text-white shadow-md shadow-emerald-600/20 transform scale-105"
-              : "bg-white text-slate-600 border border-slate-200 hover:border-emerald-300 hover:text-emerald-700 hover:bg-emerald-50"
+              ? "bg-[#639922] text-white shadow-md shadow-emerald-600/20 transform scale-105"
+              : "bg-white text-slate-600 border border-slate-200 hover:border-emerald-300 hover:text-emerald-700 hover:bg-[#F5F5F5]"
           )}
         >
           {cat}

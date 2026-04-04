@@ -6,7 +6,7 @@ import {
   getCatalogProducts,
 } from "@/lib/catalogData";
 import { SectionWrapper } from "@/components/SectionWrapper";
-import { ImageGallery } from "@/components/ImageGallery";
+import { ProductEnquireModal } from "@/components/ProductEnquireModal";
 
 export const dynamicParams = true;
 
@@ -30,60 +30,66 @@ export default async function ProductDetailsPage({
   }
 
   return (
-    <main className="pt-24 pb-16 min-h-screen bg-[#FAF7F2]">
+    <main className="pt-[100px] lg:pt-[110px] pb-16 min-h-screen bg-[#F5F5F5]">
       <SectionWrapper>
-        <Link href="/products" className="inline-flex items-center text-slate-500 hover:text-[#FF7A49] mb-8 transition font-semibold group uppercase text-sm tracking-wider">
+        <Link href="/products" className="inline-flex items-center text-slate-500 hover:text-[#639922] mb-4 transition font-semibold group uppercase text-sm tracking-wider">
           <ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform" />
           Back to Products
         </Link>
 
-        <div className="bg-white rounded-2xl shadow-xl shadow-slate-200/50 border border-slate-100 overflow-hidden relative">
+        <div className="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden relative">
           {product.offer && (
-             <div className="absolute top-6 left-6 z-10 bg-[#FF7A49] text-white text-xs font-bold tracking-widest uppercase px-4 py-2 rounded shadow-lg">
+             <div className="absolute top-6 left-6 z-10 bg-[#639922] text-white text-xs font-bold tracking-widest uppercase px-4 py-2 rounded shadow-lg">
                {product.offer}
              </div>
           )}
 
-          <div className="grid grid-cols-1 lg:grid-cols-12">
-            {/* Left: Interactive Gallery */}
-            <div className="lg:col-span-5 p-8 lg:p-12 lg:pr-8 bg-slate-50/50 border-b lg:border-b-0 lg:border-r border-slate-100 relative">
-               <div className="sticky top-28">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-0">
+            {/* Left: Standard Single Image */}
+            <div className="lg:col-span-5 p-8 lg:p-10 bg-slate-50/50 border-b lg:border-b-0 lg:border-r border-slate-100 relative flex items-center justify-center min-h-[300px]">
                  {product.images && product.images.length > 0 ? (
-                   <ImageGallery images={product.images} />
+                    <img
+                      src={product.images[0]}
+                      alt={product.name}
+                      className="max-h-[500px] w-full object-contain hover:scale-105 transition-transform duration-700 bg-white mix-blend-multiply"
+                    />
                  ) : (
-                    <div className="h-80 bg-slate-100/50 rounded-xl w-full flex items-center justify-center border-2 border-dashed border-slate-200">
-                        <Zap className="w-20 h-20 text-slate-300" />
+                    <div className="h-[300px] bg-slate-100/50 rounded-xl w-full flex items-center justify-center border-2 border-dashed border-slate-200">
+                       <Zap className="w-20 h-20 text-slate-300" />
                     </div>
                  )}
-               </div>
             </div>
 
-            {/* Right: Rich Details */}
-            <div className="lg:col-span-7 p-8 lg:p-14">
-              <h1 className="text-3xl md:text-4xl font-extrabold text-[#1C2028] mb-6 tracking-tight leading-tight">
+            {/* Right: Focused Details */}
+            <div className="lg:col-span-7 p-8 lg:p-10 flex flex-col justify-start">
+              
+              <h1 className="text-3xl md:text-4xl font-extrabold text-[#2C2C2A] mb-3 tracking-tight leading-tight">
                 {product.name}
               </h1>
 
               {product.price !== undefined && (
-                 <p className="text-3xl font-extrabold text-[#FF7A49] mb-8">
+                 <p className="text-2xl font-extrabold text-[#639922] mb-5">
                    ₹{product.price.toFixed(2)}
                  </p>
               )}
 
-              <div className="prose prose-lg prose-slate mb-12">
-                <p className="text-slate-600 leading-relaxed font-medium">
-                  {product.description}
-                </p>
-              </div>
+              {/* Only show description if it exists and is not empty */}
+              {product.description && product.description.trim() !== "" && (
+                <div className="prose prose-slate mb-6 max-w-full">
+                  <p className="text-slate-600 leading-relaxed font-medium text-[15px]">
+                    {product.description}
+                  </p>
+                </div>
+              )}
 
               {product.varieties && product.varieties.length > 0 && (
-                <div className="mb-12">
-                  <h3 className="text-sm font-bold text-[#1C2028] uppercase tracking-wider mb-4">
+                <div className="mb-6">
+                  <h3 className="text-xs font-bold text-[#2C2C2A] uppercase tracking-wider mb-3">
                     Available Variations
                   </h3>
-                  <div className="flex flex-wrap gap-3">
+                  <div className="flex flex-wrap gap-2">
                     {product.varieties.map((variety, i) => (
-                      <span key={i} className="px-4 py-2 border-2 border-slate-200 text-slate-700 font-semibold text-sm rounded-lg hover:border-[#FF7A49] transition-colors cursor-pointer">
+                      <span key={i} className="px-4 py-2 border border-slate-200 bg-slate-50 text-slate-700 font-semibold text-xs rounded-md shadow-sm">
                         {variety}
                       </span>
                     ))}
@@ -91,20 +97,20 @@ export default async function ProductDetailsPage({
                 </div>
               )}
 
-              {/* Grid block for Features and Specs */}
-              <div className="grid grid-cols-1 xl:grid-cols-2 gap-12 mb-12">
+              {/* Grid block for Features and Specs horizontally */}
+              <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 mb-6 w-full flex-grow">
                 {/* Features List */}
                 {product.features && product.features.length > 0 && (
                   <div>
-                    <h3 className="text-sm font-bold text-[#1C2028] uppercase tracking-wider mb-6 flex items-center border-b border-slate-100 pb-4">
-                      <Zap className="w-4 h-4 mr-2 text-[#FF7A49]" />
+                    <h3 className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-3 flex items-center">
+                      <Zap className="w-4 h-4 mr-2 text-[#639922]" />
                       Key Features
                     </h3>
-                    <ul className="space-y-4">
+                    <ul className="space-y-2">
                       {product.features.map((feature, i) => (
-                        <li key={i} className="flex items-start text-slate-700 p-3 rounded-lg border border-slate-100 bg-slate-50/50">
-                          <Check className="w-5 h-5 text-[#FF7A49] mr-3 shrink-0 mt-0.5" />
-                          <span className="font-medium text-sm">{feature}</span>
+                        <li key={i} className="flex items-start text-[#2C2C2A]">
+                          <Check className="w-4 h-4 text-[#639922] mr-3 shrink-0 mt-[2px]" />
+                          <span className="font-semibold text-sm leading-tight">{feature}</span>
                         </li>
                       ))}
                     </ul>
@@ -114,20 +120,20 @@ export default async function ProductDetailsPage({
                 {/* specifications Card */}
                 {product.specifications && product.specifications.length > 0 && (
                     <div>
-                    <h3 className="text-sm font-bold text-[#1C2028] uppercase tracking-wider mb-6 flex items-center border-b border-slate-100 pb-4">
-                        <ListTree className="w-4 h-4 mr-2 text-[#FF7A49]" />
-                        Specifications
+                    <h3 className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-4 flex items-center">
+                        <ListTree className="w-4 h-4 mr-2 text-[#639922]" />
+                        Technical Specifications
                     </h3>
-                    <div className="border border-slate-200 rounded-lg overflow-hidden shadow-sm">
+                    <div className="border-t border-b border-slate-200">
                         <table className="w-full text-left text-sm">
                         <tbody className="divide-y divide-slate-100">
                             {product.specifications.map((spec, i) => (
-                            <tr key={i} className="bg-white hover:bg-slate-50 transition-colors">
-                                <th className="px-5 py-4 font-bold text-slate-800 w-1/3 bg-slate-50/50">
-                                {spec.key}
+                            <tr key={i} className="group hover:bg-slate-50 transition-colors">
+                                <th className="py-3 px-1 font-semibold text-slate-500 w-[50%] pr-4 text-[11px] tracking-widest uppercase">
+                                  {spec.key}
                                 </th>
-                                <td className="px-5 py-4 text-slate-600 font-medium">
-                                {spec.value}
+                                <td className="py-3 font-bold text-[#2C2C2A]">
+                                  {spec.value}
                                 </td>
                             </tr>
                             ))}
@@ -139,19 +145,8 @@ export default async function ProductDetailsPage({
               </div>
 
               {/* CTA Section */}
-              <div className="flex flex-col sm:flex-row gap-4 pt-8 border-t border-slate-100">
-                <Link
-                  href="/contact"
-                  className="flex-1 bg-[#FF7A49] hover:bg-[#e66a3d] text-white text-center px-8 py-4 rounded-lg font-bold text-sm tracking-wider uppercase transition-all transform hover:-translate-y-0.5 shadow-xl shadow-[#FF7A49]/20"
-                >
-                  Enquire Now
-                </Link>
-                <Link
-                  href="/contact"
-                  className="flex-1 bg-white hover:bg-slate-50 text-[#1C2028] border-2 border-slate-200 text-center px-8 py-4 rounded-lg font-bold text-sm tracking-wider uppercase transition-all hover:border-slate-300"
-                >
-                  Download Brochure
-                </Link>
+              <div className="flex flex-col sm:flex-row gap-4 pt-6 mt-auto border-t border-slate-100">
+                <ProductEnquireModal productName={product.name} />
               </div>
 
             </div>

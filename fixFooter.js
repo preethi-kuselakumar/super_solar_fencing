@@ -1,0 +1,1 @@
+const fs = require('fs'); let c = fs.readFileSync('components/Footer.tsx', 'utf8'); c = c.replace(/bg-\\[000000\\]/g, 'bg-black text-white').replace(/text-\\[ffffff\\]/g, 'text-white').replace(/text-\\[d1d5db\\]/g, 'text-gray-300').replace(/border-\\[1f2937\\]/g, 'border-gray-800'); fs.writeFileSync('components/Footer.tsx', c);

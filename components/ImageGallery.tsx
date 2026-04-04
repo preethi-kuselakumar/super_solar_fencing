@@ -28,7 +28,7 @@ export function ImageGallery({ images }: { images: string[] }) {
              >
                <Shield className={cn(
                  "transition-colors",
-                 mainIndex === i ? "text-emerald-500 w-10 h-10" : "text-slate-300 w-8 h-8"
+                 mainIndex === i ? "text-[#639922] w-10 h-10" : "text-slate-300 w-8 h-8"
                )} />
              </button>
           ))}
