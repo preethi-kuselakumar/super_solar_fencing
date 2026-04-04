@@ -4,7 +4,7 @@ import { ArrowRight, ShieldCheck, Zap, Sun, Shield } from "lucide-react";
 import { SectionWrapper } from "@/components/SectionWrapper";
 import { productData } from "@/lib/dummyData";
 import { ServiceSection } from "@/components/ServiceSection";
-import { ProductSection } from "@/components/ProductSection";
+import { ProductCarouselSection } from "@/components/ProductCarouselSection";
 
 export default function Home() {
   return (
@@ -114,7 +114,7 @@ export default function Home() {
       </section>
 
       {/* Products Section */}
-      <ProductSection />
+      <ProductCarouselSection />
 
       {/* Motive / Why Choose Us Section */}
       <section className="bg-[#F5F5F5] py-24 px-4 sm:px-6 lg:px-8">
