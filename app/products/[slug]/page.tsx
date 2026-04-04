@@ -58,15 +58,15 @@ export default async function ProductDetailsPage({
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-0">
             {/* Left: Standard Single Image */}
-            <div className="lg:col-span-5 p-8 lg:p-10 bg-slate-50/50 border-b lg:border-b-0 lg:border-r border-slate-100 relative flex items-center justify-center min-h-[300px]">
+            <div className="lg:col-span-5 p-8 lg:p-10 bg-slate-50/50 border-b lg:border-b-0 lg:border-r border-slate-100 relative flex items-center justify-center aspect-square">
                  {product.images && product.images.length > 0 ? (
                     <img
                       src={product.images[0]}
                       alt={product.name}
-                      className="max-h-[500px] w-full object-contain hover:scale-105 transition-transform duration-700 bg-white mix-blend-multiply"
+                      className="max-h-full w-full object-contain hover:scale-105 transition-transform duration-700 bg-white mix-blend-multiply"
                     />
                  ) : (
-                    <div className="h-[300px] bg-slate-100/50 rounded-xl w-full flex items-center justify-center border-2 border-dashed border-slate-200">
+                    <div className="aspect-square bg-slate-100/50 rounded-xl w-full flex items-center justify-center border-2 border-dashed border-slate-200">
                        <Zap className="w-20 h-20 text-slate-300" />
                     </div>
                  )}
@@ -83,15 +83,6 @@ export default async function ProductDetailsPage({
                  <p className="text-2xl font-extrabold text-[#639922] mb-5">
                    ₹{product.price.toFixed(2)}
                  </p>
-              )}
-
-              {/* Only show description if it exists and is not empty */}
-              {product.description && product.description.trim() !== "" && (
-                <div className="prose prose-slate mb-6 max-w-full">
-                  <p className="text-slate-600 leading-relaxed font-medium text-[15px]">
-                    {product.description}
-                  </p>
-                </div>
               )}
 
               {product.varieties && product.varieties.length > 0 && (
@@ -157,7 +148,16 @@ export default async function ProductDetailsPage({
               </div>
 
               {/* CTA Section */}
-              <div className="flex flex-col sm:flex-row gap-4 pt-6 mt-auto border-t border-slate-100">
+              <div className="flex flex-col gap-6 pt-6 mt-auto border-t border-slate-100">
+                {/* Only show description if it exists and is not empty */}
+                {product.description && product.description.trim() !== "" && (
+                  <div className="prose prose-slate max-w-full">
+                    <p className="text-slate-600 leading-relaxed font-medium text-[15px]">
+                      {product.description}
+                    </p>
+                  </div>
+                )}
+
                 <ProductEnquireModal productName={product.name} />
               </div>
 
