@@ -41,7 +41,8 @@ const fallbackAboutPageContent: AboutPageContent = {
   title: "About Super Solar Fencing",
   content:
     "We are industry leaders in designing, engineering, and manufacturing high-performance solar-powered perimeter security solutions for agricultural, industrial, and residential applications.",
-  image: "/placeholder-project.jpg",
+  image:
+    "https://tiimg.tistatic.com/fp/1/008/150/iron-solar-fencing-for-security-purposes-output-voltage-5-10-kva-321.jpg",
 };
 
 function getImageUrl(image: SanityProduct["mainImage"]): string | null {
@@ -209,9 +210,10 @@ export async function getAboutPageContent(): Promise<AboutPageContent> {
     return fallbackAboutPageContent;
   }
 
-  const image = aboutPage.image
-    ? urlFor(aboutPage.image).width(1200).fit("max").auto("format").url()
-    : fallbackAboutPageContent.image;
+  const image =
+    aboutPage.image?.asset?._ref || aboutPage.image?.asset?._id
+      ? urlFor(aboutPage.image).width(1200).fit("max").auto("format").url()
+      : fallbackAboutPageContent.image;
 
   return {
     title: aboutPage.title || fallbackAboutPageContent.title,

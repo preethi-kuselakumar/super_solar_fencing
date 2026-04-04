@@ -3,7 +3,6 @@
 import { useState } from "react";
 import Image from "next/image";
 import { Play, MousePointer2 } from "lucide-react";
-import type { CatalogProject } from "@/lib/types";
 
 export const projectsData = [
   {
@@ -63,24 +62,9 @@ export const projectsData = [
   }
 ];
 
-type ProjectItem = {
-  id: string | number;
-  title: string;
-  category: string;
-  image?: string;
-  description?: string;
-  videoUrl?: string;
-};
-
-type ProjectSectionProps = {
-  isHomepage?: boolean;
-  projects?: CatalogProject[];
-};
-
-export function ProjectSection({ isHomepage = true, projects }: ProjectSectionProps) {
+export function ProjectSection({ isHomepage = true }: { isHomepage?: boolean }) {
   // If it's the homepage, show exactly 6 items max at a time before needing to scroll the box.
-  const displayProjects: ProjectItem[] =
-    projects && projects.length > 0 ? projects : projectsData;
+  const displayProjects = projectsData; // In real app, might slice based on need
 
   return (
     <section className="bg-[#FAF7F2] pb-24 w-full overflow-hidden">
@@ -118,7 +102,7 @@ export function ProjectSection({ isHomepage = true, projects }: ProjectSectionPr
   );
 }
 
-function ProjectCard({ project }: { project: ProjectItem }) {
+function ProjectCard({ project }: { project: unknown }) {
   const [isPlaying, setIsPlaying] = useState(false);
 
   return (
@@ -139,7 +123,6 @@ function ProjectCard({ project }: { project: ProjectItem }) {
                 src={project.image} 
                 alt={project.title}
                 fill
-                unoptimized
                 className="object-cover transition-transform duration-700 group-hover:scale-105 pointer-events-none"
               />
             ) : (
@@ -169,11 +152,6 @@ function ProjectCard({ project }: { project: ProjectItem }) {
         <h3 className="text-[22px] font-bold text-[#1C2028] tracking-tight group-hover:text-[#FF7A49] transition-colors leading-snug">
           {project.title}
         </h3>
-        {project.description ? (
-          <p className="mt-2 text-[14px] text-[#6D6D6D] leading-relaxed line-clamp-3">
-            {project.description}
-          </p>
-        ) : null}
       </div>
     </div>
   );

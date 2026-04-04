@@ -2,12 +2,17 @@ import Image from "next/image";
 import Link from "next/link";
 import { ShieldCheck, Zap, Sun, Shield } from "lucide-react";
 import { PageHeader } from "@/components/PageHeader";
+import { getAboutPageContent } from "@/lib/catalogData";
 
-export default function AboutPage() {
+export const revalidate = 30;
+
+export default async function AboutPage() {
+  const aboutContent = await getAboutPageContent();
+
   return (
     <>
       <PageHeader 
-        title="About Us" 
+        title={aboutContent.title || "About Us"} 
         breadcrumbs={[{ label: "Home", href: "/" }, { label: "About" }]} 
       />
 
@@ -19,12 +24,10 @@ export default function AboutPage() {
           <div className="space-y-6 order-2 lg:order-1">
             <span className="text-[#FF7A49] font-bold text-[13px] tracking-[0.2em] uppercase mb-4 block">Our Expertise</span>
             <h2 className="text-[36px] md:text-[44px] font-extrabold text-[#1C2028] leading-[1.15] tracking-tight">
-              Pioneering the Future <br className="hidden md:block" />
-              of Clean Energy & <br className="hidden md:block" />
-              Security
+              {aboutContent.title || "Pioneering the Future of Clean Energy & Security"}
             </h2>
             <p className="text-[#969696] text-[15px] leading-relaxed max-w-lg mt-6 mb-6">
-              Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo erat amet. Tempor erat sed stet lorem sit clita duo justo elitr rebum at clita diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo erat amet.
+              {aboutContent.content}
             </p>
             <p className="text-[#969696] text-[15px] leading-relaxed max-w-lg mb-8">
               Tempor erat sed stet lorem sit clita duo justo elitr rebum at clita diam dolor diam ipsum sit. Aliqu diam amet diam et eos.
@@ -46,9 +49,10 @@ export default function AboutPage() {
             <div className="absolute top-0 left-0 w-[95%] h-full bg-[#EFEBE4] z-0"></div>
             <div className="relative z-10 w-full aspect-[4/3] shadow-sm bg-gray-200">
               <Image 
-                src="https://tiimg.tistatic.com/fp/1/008/150/iron-solar-fencing-for-security-purposes-output-voltage-5-10-kva-321.jpg" 
+                src={aboutContent.image || "https://tiimg.tistatic.com/fp/1/008/150/iron-solar-fencing-for-security-purposes-output-voltage-5-10-kva-321.jpg"} 
                 alt="Installation of solar panels"
                 fill
+                unoptimized
                 className="object-cover"
               />
             </div>

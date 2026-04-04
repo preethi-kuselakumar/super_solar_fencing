@@ -31,7 +31,6 @@ export function ProductSection() {
   );
 }
 
-function ProductCard({ product }: { product: unknown }) {
 function ProductCard({ product }: { product: ProductItem }) {
   // Use a sensible default if the image is just a placeholder path without actual image
   const defaultImage = "https://images.unsplash.com/photo-1509391366360-120953a17e1e?q=80&w=800&auto=format&fit=crop";

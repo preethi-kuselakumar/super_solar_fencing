@@ -16,6 +16,8 @@ import {structure} from './sanity/structure'
 console.log('Loaded schemaTypes:', schemaTypes)
 
 export default defineConfig({
+  name: 'default',
+  title: 'solar-web',
   basePath: '/studio',
   projectId,
   dataset,
@@ -23,7 +25,9 @@ export default defineConfig({
     types: schemaTypes,
   },
   plugins: [
-    structureTool({structure}),
+    structureTool({
+      structure,
+    }),
     // Vision is for querying with GROQ from inside the Studio
     // https://www.sanity.io/docs/the-vision-plugin
     visionTool({defaultApiVersion: apiVersion}),
