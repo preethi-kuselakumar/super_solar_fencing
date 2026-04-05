@@ -88,7 +88,7 @@ export const CardCarousel: React.FC<CarouselProps> = ({
   const css = `
   .swiper {
     width: 100%;
-    padding: 16px 8px 52px;
+    padding: 8px 0px 42px;
   }
 
   .swiper-slide {

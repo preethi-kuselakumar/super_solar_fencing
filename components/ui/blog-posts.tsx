@@ -39,7 +39,7 @@ export const Component = ({
   return (
     <section
       className={cn(
-        "container relative my-20 mx-auto px-4 py-10",
+        "container relative mx-auto px-4 py-2 md:my-10 md:py-10",
         className,
       )}
     >
@@ -47,7 +47,7 @@ export const Component = ({
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: false }}
-        className="mb-6 text-center text-3xl font-extrabold capitalize !leading-[1.4] text-[#2C2C2A] md:text-5xl"
+        className="mb-3 text-center text-3xl font-extrabold capitalize text-[#2C2C2A] md:mb-6 md:text-5xl"
       >
         {title}
       </motion.h1>
@@ -68,7 +68,7 @@ export const Component = ({
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: false }}
         transition={{ delay: 0.1 }}
-        className="mx-auto mb-10 max-w-[800px] text-center text-lg !leading-[1.8] text-[#5F5E5A] md:text-xl"
+        className="mx-auto mb-6 max-w-[800px] text-center text-[15px] leading-relaxed text-[#5F5E5A] md:mb-10 md:text-xl"
       >
         {description}
       </motion.p>

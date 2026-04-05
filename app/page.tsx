@@ -99,41 +99,41 @@ export default async function Home() {
   return (
     <>
       {/* Mobile-first hero with responsive media and clear CTA hierarchy */}
-      <section className="relative min-h-[78vh] overflow-hidden bg-[#1F2924]">
+      <section className="relative min-h-[65vh] sm:min-h-[18vh] overflow-hidden bg-[#1F2924]">
         <Image
           src="https://i.ytimg.com/vi/e59oaLBmi64/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLARKqzi0hlUZzV7Ucb0Oxelc-EiOA"
           alt="Solar energy field"
           fill
           priority
           sizes="100vw"
-          className="object-cover"
+          className="object-cover object-center"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/55 to-black/70" />
 
-        <div className="relative mx-auto flex min-h-[78vh] w-full max-w-[1400px] items-center px-4 py-16 sm:px-6 lg:px-8">
-          <div className="max-w-3xl space-y-5 sm:space-y-6">
-            <p className="animate-fade-in-up text-[12px] font-bold uppercase tracking-[0.2em] text-[#9CCF63] sm:text-[13px]">
+        <div className="relative mx-auto flex min-h-[65vh] sm:min-h-[78vh] w-full max-w-[1400px] items-center px-4 py-10 sm:px-6 lg:px-8 mt-8 sm:mt-0 sm:py-16">
+          <div className="max-w-[290px] space-y-4 sm:max-w-3xl sm:space-y-6">
+            <p className="animate-fade-in-up text-[10px] font-bold uppercase tracking-[0.2em] text-[#9CCF63] sm:text-[13px]">
               Trusted Solar Protection
             </p>
-            <h1 className="animate-fade-in-up delay-100 text-3xl font-extrabold leading-tight tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl">
+            <h1 className="animate-fade-in-up delay-100 text-2xl font-extrabold leading-tight tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl">
               Secure Perimeters With
               <br className="hidden sm:block" />
-              <span className="relative inline-block text-transparent bg-clip-text bg-gradient-to-r from-white to-[#9CCF63]">Smart Solar Fencing</span>
+              <span className="relative block sm:inline-block text-transparent bg-clip-text bg-gradient-to-r from-white to-[#9CCF63]">Smart Solar Fencing</span>
             </h1>
-            <p className="animate-fade-in-up delay-200 max-w-2xl text-[15px] leading-7 text-gray-200 sm:text-base">
+            <p className="animate-fade-in-up delay-200 text-[12px] leading-5 text-gray-200 sm:max-w-2xl sm:text-base sm:leading-7">
               Durable, low-maintenance fencing systems built for farms, factories,
               and open land with dependable solar-powered performance.
             </p>
-            <div className="animate-fade-in-up delay-300 flex flex-col gap-3 sm:flex-row sm:items-center">
+            <div className="animate-fade-in-up delay-300 flex flex-row flex-wrap gap-2.5 sm:gap-3 sm:flex-row sm:items-center">
               <Link
                 href="/products"
-                className="hover-electric-glow inline-flex min-h-[46px] items-center justify-center rounded-xl bg-[#639922] px-6 text-sm font-bold uppercase tracking-wider text-white transition hover:bg-[#547f1d]"
+                className="hover-electric-glow inline-flex min-h-[38px] items-center justify-center rounded-lg bg-[#639922] px-4 text-[10px] font-bold uppercase tracking-wider text-white transition hover:bg-[#547f1d] sm:min-h-[46px] sm:rounded-xl sm:px-6 sm:text-sm"
               >
                 Explore Products
               </Link>
               <Link
                 href="/contact"
-                className="inline-flex min-h-[46px] items-center justify-center rounded-xl border border-white/40 bg-white/10 px-6 text-sm font-bold uppercase tracking-wider text-white backdrop-blur transition hover:bg-white/20 hover:border-[#639922] hover:text-[#9CCF63]"
+                className="inline-flex min-h-[38px] items-center justify-center rounded-lg border border-white/40 bg-white/10 px-4 text-[10px] font-bold uppercase tracking-wider text-white backdrop-blur transition hover:border-[#639922] hover:bg-white/20 hover:text-[#9CCF63] sm:min-h-[46px] sm:rounded-xl sm:px-6 sm:text-sm"
               >
                 Contact Us
               </Link>
@@ -142,10 +142,10 @@ export default async function Home() {
         </div>
       </section>
 
-      <section className="bg-[#F5F5F5] px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-10 sm:py-14">
+      <section className="bg-[#F5F5F5] px-4 py-8 sm:px-6 lg:px-8 lg:py-6">
         <div className="max-w-[1200px] mx-auto">
           {/* Stats cards are horizontal on mobile and 3-column on larger screens */}
-          <div className="mb-12 sm:mb-14">
+          <div className="mb-2">
             <div className="flex snap-x gap-4 overflow-x-auto pb-2 sm:grid sm:grid-cols-3 sm:gap-5 sm:overflow-visible sm:pb-0">
             <div className="group min-w-[240px] snap-start rounded-2xl border border-slate-200 bg-white p-5 text-center shadow-sm sm:min-w-0 transition-transform duration-300 hover:-translate-y-1 hover:shadow-md hover:border-[#639922]/30">
               <p className="text-3xl font-extrabold text-[#639922] sm:text-4xl transition-colors duration-300 group-hover:text-[#547f1d]">50+</p>
@@ -169,7 +169,7 @@ export default async function Home() {
           </div>
 
           {/* Service Highlights */}
-          <div className="mb-14 sm:mb-16">
+          <div className="mb-1">
             <CardCarousel
               images={carouselImages}
               autoplayDelay={3200}
@@ -188,11 +188,11 @@ export default async function Home() {
             backgroundLabel="PRODUCTS"
             backgroundPosition="right"
             posts={productSectionPosts}
-            className="mb-14 mt-2 sm:mb-16"
+            className="mb-4 mt-0"
           />
 
           {/* About section uses single-column first, then two-column on large screens */}
-          <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-8 sm:gap-10">
+          <div className="mb-8 mt-10 sm:mt-14 grid grid-cols-1 items-center gap-8 lg:grid-cols-2 lg:gap-8">
             <div className="relative order-2 hidden lg:order-1 lg:block">
               <div className="absolute -left-3 -top-3 h-full w-full rounded-2xl bg-[#EDE8DE] sm:-left-4 sm:-top-4" />
               <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-gray-200 shadow-sm">
@@ -208,7 +208,7 @@ export default async function Home() {
             </div>
 
             <div className="order-1 space-y-4 lg:order-2 lg:space-y-5">
-              <span className="block text-[12px] font-bold uppercase tracking-[0.18em] text-[#639922] sm:text-[13px]">
+              <span className="block text-[15px] font-bold uppercase tracking-[0.18em] text-[#639922] sm:text-[17px]">
                 About Us
               </span>
               <div className="relative lg:hidden">
@@ -224,7 +224,7 @@ export default async function Home() {
                   />
                 </div>
               </div>
-              <h2 className="text-3xl font-extrabold leading-tight tracking-tight text-[#2C2C2A] sm:text-4xl lg:text-5xl">
+              <h2 className="text-3xl font-extrabold leading-tight tracking-tight text-[#2C2C2A] sm:text-4xl md:text-[42px] lg:text-5xl">
                 Among The Top Solar &
                 <br className="hidden sm:block" />
                 Renewable Energy Teams
@@ -246,10 +246,10 @@ export default async function Home() {
       </section>
 
       {/* Motive / Why Choose Us Section */}
-      <section className="bg-[#F5F5F5] px-4 py-12 sm:px-6 sm:py-14 lg:px-8 lg:py-16">
+      <section className="bg-[#F5F5F5] px-4 pb-8 pt-6 sm:px-6 lg:px-8 lg:pb-10 lg:pt-8">
         <div className="max-w-[1200px] mx-auto">
-          <div className="mb-10 max-w-3xl sm:mb-12">
-            <span className="mb-3 block text-[12px] font-bold uppercase tracking-[0.2em] text-[#639922] sm:text-[13px]">
+          <div className="mb-8 max-w-3xl">
+            <span className="mb-3 block text-[15px] font-bold uppercase tracking-[0.2em] text-[#639922] sm:text-[17px]">
               Why Choose Us!
             </span>
             <h2 className="mb-4 text-3xl font-extrabold leading-tight tracking-tight text-[#2C2C2A] sm:text-4xl md:text-[44px]">

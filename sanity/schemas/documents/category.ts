@@ -1,4 +1,4 @@
-import { defineField, defineType } from "sanity";
+﻿import { defineField, defineType } from "sanity";
 
 const category = defineType({
   name: "category",
@@ -39,21 +39,21 @@ const category = defineType({
             'count(*[_type == "category" && slug.current == $slug && !(_id in [$draft, $published])]) == 0',
             {
               slug,
-              draft: `drafts.${documentId}`,
+              draft: "drafts.${documentId}",
               published: documentId,
             },
           );
         },
-          defineField({
-            name: "shortDescription",
-            title: "Short Description",
-            type: "text",
-            rows: 3,
-            description: "Brief helper text shown on product category sections.",
-            validation: (rule) => rule.max(220),
-          }),
       },
       validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: "shortDescription",
+      title: "Short Description",
+      type: "text",
+      rows: 3,
+      description: "Brief helper text shown on product category sections.",
+      validation: (rule) => rule.max(220),
     }),
   ],
   preview: {
