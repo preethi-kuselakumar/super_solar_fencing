@@ -44,6 +44,14 @@ const category = defineType({
             },
           );
         },
+          defineField({
+            name: "shortDescription",
+            title: "Short Description",
+            type: "text",
+            rows: 3,
+            description: "Brief helper text shown on product category sections.",
+            validation: (rule) => rule.max(220),
+          }),
       },
       validation: (rule) => rule.required(),
     }),

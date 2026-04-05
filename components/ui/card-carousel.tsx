@@ -88,7 +88,7 @@ export const CardCarousel: React.FC<CarouselProps> = ({
   const css = `
   .swiper {
     width: 100%;
-    padding: 16px 0 52px;
+    padding: 16px 8px 52px;
   }
 
   .swiper-slide {
@@ -99,6 +99,10 @@ export const CardCarousel: React.FC<CarouselProps> = ({
   }
 
   @media (min-width: 768px) {
+    .swiper {
+      padding: 16px 0 52px;
+    }
+
     .swiper-slide {
       width: 320px;
       height: 420px;
@@ -178,18 +182,20 @@ export const CardCarousel: React.FC<CarouselProps> = ({
           <div className="flex w-full items-center justify-center gap-4">
             <div className="w-full">
               <Swiper
-                spaceBetween={22}
+                spaceBetween={16}
                 effect="coverflow"
                 grabCursor={true}
                 centeredSlides={true}
                 loop={false}
                 speed={stepDurationMs}
-                slidesPerView={1.2}
+                slidesPerView={1.08}
                 breakpoints={{
-                  640: { slidesPerView: 2.1 },
+                  640: { slidesPerView: 2.1, spaceBetween: 20 },
                   1024: { slidesPerView: 3.1 },
                   1280: { slidesPerView: 4.1 },
                 }}
+                touchRatio={1.15}
+                resistanceRatio={0.9}
                 coverflowEffect={{
                   rotate: 0,
                   stretch: 12,

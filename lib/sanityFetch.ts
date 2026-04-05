@@ -7,11 +7,10 @@ import {
   allProductsQuery,
   allProjectsQuery,
   allServicesQuery,
-  aboutPageQuery,
   featuredProductsQuery,
   productBySlugQuery,
 } from "@/lib/queries";
-import type { AboutPage, Product, Project, Service } from "@/lib/types";
+import type { Product, Project, Service } from "@/lib/types";
 
 const SANITY_REVALIDATE_SECONDS = 300;
 const SANITY_FAST_REVALIDATE_SECONDS = 30;
@@ -47,13 +46,6 @@ async function fetchProjects(): Promise<Project[]> {
   return projects ?? [];
 }
 
-async function fetchAboutPage(): Promise<AboutPage | null> {
-  const aboutPage = await sanityClient
-    .withConfig({ useCdn: false })
-    .fetch<AboutPage | null>(aboutPageQuery);
-  return aboutPage ?? null;
-}
-
 async function fetchServices(): Promise<Service[]> {
   const services = await sanityClient
     .withConfig({ useCdn: false })
@@ -61,7 +53,7 @@ async function fetchServices(): Promise<Service[]> {
   return services ?? [];
 }
 
-export const getProducts = unstable_cache(fetchProducts, ["sanity-products"], {
+export const getProducts = unstable_cache(fetchProducts, ["sanity-products-v2"], {
   revalidate: SANITY_REVALIDATE_SECONDS,
   tags: ["sanity", "sanity:products"],
 });
@@ -87,11 +79,6 @@ export const getProductBySlug = unstable_cache(
 export const getProjects = unstable_cache(fetchProjects, ["sanity-projects"], {
   revalidate: SANITY_FAST_REVALIDATE_SECONDS,
   tags: ["sanity", "sanity:projects"],
-});
-
-export const getAboutPage = unstable_cache(fetchAboutPage, ["sanity-about-page"], {
-  revalidate: SANITY_FAST_REVALIDATE_SECONDS,
-  tags: ["sanity", "sanity:about"],
 });
 
 export const getServices = unstable_cache(fetchServices, ["sanity-services"], {

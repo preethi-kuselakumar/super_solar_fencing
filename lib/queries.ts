@@ -18,7 +18,8 @@ const productProjection = groq`{
   category->{
     _id,
     title,
-    "slug": slug.current
+    "slug": slug.current,
+    shortDescription
   },
   mainImage{
     ...,
@@ -113,26 +114,4 @@ export const allServicesQuery = groq`
   *[_type == "service" && isActive != false]
   | order(coalesce(displayOrder, 999999) asc, _createdAt desc)
   ${serviceProjection}
-`;
-
-export const aboutPageQuery = groq`
-  *[_type == "aboutPage"]
-  | order(_updatedAt desc)[0]{
-    _id,
-    _createdAt,
-    _updatedAt,
-    title,
-    content,
-    image{
-      ...,
-      asset->{
-        _id,
-        url,
-        metadata{
-          dimensions,
-          lqip
-        }
-      }
-    }
-  }
 `;

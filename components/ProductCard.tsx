@@ -6,7 +6,7 @@ export function ProductCard({ product }: { product: CatalogProduct }) {
   return (
     <Link
       href={`/products/${product.slug}`}
-      className="group mx-auto flex h-full w-full max-w-[340px] min-w-0 flex-col bg-white border border-slate-200 rounded-lg overflow-hidden hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)] hover:border-[#639922]/30 transition-all duration-300 relative"
+      className="group mx-auto flex h-full min-h-[290px] sm:min-h-[320px] w-full max-w-[340px] min-w-0 flex-col bg-white border border-slate-200 rounded-lg overflow-hidden hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)] hover:border-[#639922]/30 transition-all duration-300 relative"
     >
       {product.offer && (
         <div className="absolute top-4 left-4 z-10 bg-[#639922] text-white text-[10px] font-bold tracking-wider uppercase px-3 py-1.5 rounded shadow">

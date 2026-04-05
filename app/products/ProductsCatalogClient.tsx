@@ -11,6 +11,11 @@ type ProductsCatalogClientProps = {
   initialProducts: CatalogProduct[];
 };
 
+type CategorySectionData = {
+  products: CatalogProduct[];
+  shortDescription: string;
+};
+
 export default function ProductsCatalogClient({
   initialProducts,
 }: ProductsCatalogClientProps) {
@@ -32,13 +37,21 @@ export default function ProductsCatalogClient({
       (product.shortDescription || "").toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-  const productsByCategory = filteredProducts.reduce<Record<string, CatalogProduct[]>>(
+  const productsByCategory = filteredProducts.reduce<Record<string, CategorySectionData>>(
     (acc, product) => {
       const category = product.category?.trim() || "Uncategorized";
       if (!acc[category]) {
-        acc[category] = [];
+        acc[category] = {
+          products: [],
+          shortDescription: product.categoryShortDescription?.trim() || "",
+        };
       }
-      acc[category].push(product);
+
+      if (!acc[category].shortDescription && product.categoryShortDescription?.trim()) {
+        acc[category].shortDescription = product.categoryShortDescription.trim();
+      }
+
+      acc[category].products.push(product);
       return acc;
     },
     {},
@@ -87,29 +100,40 @@ export default function ProductsCatalogClient({
                 .map((_, i) => <SkeletonCard key={i} />)}
             </div>
           ) : filteredProducts.length > 0 ? (
-            <div className="mt-6 md:mt-8 space-y-8 md:space-y-12">
-              {orderedCategories.map((category) => (
-                <section key={category}>
-                  <div className="mb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-1 sm:gap-4">
-                    <h2 className="text-[22px] md:text-2xl font-extrabold text-[#2C2C2A] tracking-tight leading-tight break-words">
-                      {category}
-                    </h2>
-                    <span className="text-sm font-semibold text-slate-500">
-                      {productsByCategory[category].length} product{productsByCategory[category].length !== 1 ? "s" : ""}
-                    </span>
-                  </div>
+            <div className="mt-6 md:mt-8 space-y-10 md:space-y-12 pb-3 md:pb-0">
+              {orderedCategories.map((category) => {
+                const categorySection = productsByCategory[category];
 
-                  <div className="-mx-4 px-4 sm:mx-0 sm:px-0 overflow-x-auto pb-2">
-                    <div className="flex gap-4 sm:gap-6 w-max">
-                      {productsByCategory[category].map((product) => (
-                        <div key={product.id} className="w-[260px] sm:w-[280px] md:w-[300px] shrink-0 snap-start">
-                          <ProductCard product={product} />
-                        </div>
-                      ))}
+                return (
+                  <section key={category} className="scroll-mt-24">
+                    <div className="mb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-1 sm:gap-4">
+                      <div>
+                        <h2 className="text-[22px] md:text-2xl font-extrabold text-[#2C2C2A] tracking-tight leading-tight break-words">
+                          {category}
+                        </h2>
+                        {categorySection.shortDescription && (
+                          <p className="mt-1 text-[14px] text-slate-600 leading-relaxed max-w-3xl">
+                            {categorySection.shortDescription}
+                          </p>
+                        )}
+                      </div>
+                      <span className="text-sm font-semibold text-slate-500">
+                        {categorySection.products.length} product{categorySection.products.length !== 1 ? "s" : ""}
+                      </span>
                     </div>
-                  </div>
-                </section>
-              ))}
+
+                    <div className="-mx-4 px-4 sm:mx-0 sm:px-0 overflow-x-auto pb-2">
+                      <div className="flex gap-4 sm:gap-6 w-max">
+                        {categorySection.products.map((product) => (
+                          <div key={product.id} className="w-[260px] sm:w-[280px] md:w-[300px] shrink-0 snap-start">
+                            <ProductCard product={product} />
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </section>
+                );
+              })}
             </div>
           ) : (
             <div className="py-16 text-center flex flex-col items-center">

@@ -40,6 +40,7 @@ export type Category = {
   _updatedAt?: string;
   title: string;
   slug: string;
+  shortDescription?: string;
 };
 
 export type Product = {
@@ -95,6 +96,7 @@ export type CatalogProduct = {
   name: string;
   slug: string;
   category: string;
+  categoryShortDescription?: string;
   shortDescription: string;
   description: string;
   features: string[];
@@ -111,12 +113,6 @@ export type CatalogProject = {
   category: string;
   image: string;
   description?: string;
-};
-
-export type AboutPageContent = {
-  title: string;
-  content: string;
-  image: string | null;
 };
 
 export type CatalogService = {

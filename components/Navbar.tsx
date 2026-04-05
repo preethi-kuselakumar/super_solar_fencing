@@ -2,11 +2,36 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { Menu, X, MapPin, Clock, Phone, Globe, MessageCircle, Hash, Mail } from "lucide-react";
+import { usePathname } from "next/navigation";
+import {
+  Menu,
+  X,
+  MapPin,
+  Clock,
+  Phone,
+  Globe,
+  MessageCircle,
+  Hash,
+  Mail,
+  CircleHelp,
+  Package,
+  House,
+  Wrench,
+  PhoneCall,
+} from "lucide-react";
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
   const phoneNumber = "+01222333";
+
+  const mobileNavItems = [
+    { href: "/about", label: "About", icon: CircleHelp },
+    { href: "/products", label: "Products", icon: Package },
+    { href: "/", label: "Home", icon: House },
+    { href: "/services", label: "Services", icon: Wrench },
+    { href: `tel:${phoneNumber}`, label: "Call", icon: PhoneCall },
+  ];
 
   return (
     <header className="flex flex-col w-full z-[100] sticky top-0 shadow-md">
@@ -86,6 +111,35 @@ export function Navbar() {
             <Link href="/services" onClick={() => setIsOpen(false)} className="block min-h-[44px] px-3 py-2 text-sm font-bold text-gray-700 hover:text-[#639922] hover:bg-white rounded-md transition-colors">SERVICES</Link>
             <Link href={`tel:${phoneNumber}`} onClick={() => setIsOpen(false)} className="block min-h-[44px] px-3 py-2.5 mt-4 text-center font-bold text-[12px] tracking-widest uppercase border-2 border-[#639922] text-[#639922] rounded-full hover:bg-[#639922] hover:text-white transition-colors">CALL US</Link>
           </div>
+        </div>
+      </nav>
+
+      {/* Mobile Bottom Navbar */}
+      <nav
+        className="fixed inset-x-0 bottom-0 z-[120] border-t border-slate-200 bg-white/95 px-2 pb-[max(0.5rem,env(safe-area-inset-bottom))] pt-2 shadow-[0_-8px_20px_rgba(15,23,42,0.08)] backdrop-blur md:hidden"
+        aria-label="Mobile bottom navigation"
+      >
+        <div className="grid grid-cols-5 gap-1">
+          {mobileNavItems.map((item) => {
+            const Icon = item.icon;
+            const isActive = item.href !== `tel:${phoneNumber}` && pathname === item.href;
+
+            return (
+              <Link
+                key={item.label}
+                href={item.href}
+                className={`flex min-h-[56px] flex-col items-center justify-center rounded-xl px-1 py-2 text-[11px] font-semibold transition-colors ${
+                  isActive
+                    ? "bg-[#639922]/15 text-[#4f7d1c]"
+                    : "text-slate-600 hover:bg-slate-100 hover:text-[#639922]"
+                }`}
+                aria-current={isActive ? "page" : undefined}
+              >
+                <Icon className="mb-1 h-5 w-5" />
+                <span>{item.label}</span>
+              </Link>
+            );
+          })}
         </div>
       </nav>
     </header>

@@ -2,7 +2,6 @@ import "server-only";
 
 import { urlFor } from "@/lib/imageUrl";
 import {
-  getAboutPage,
   getFeaturedProducts,
   getProductBySlug,
   getProducts,
@@ -10,7 +9,6 @@ import {
   getServices,
 } from "@/lib/sanityFetch";
 import type {
-  AboutPageContent,
   CatalogProduct,
   CatalogProject,
   CatalogService,
@@ -72,6 +70,7 @@ function mapSanityProductToCatalog(product: SanityProduct): CatalogProduct {
     name: product.name,
     slug: product.slug,
     category: product.category?.title || "Uncategorized",
+    categoryShortDescription: product.category?.shortDescription?.trim() || "",
     shortDescription,
     description: product.description || "",
     features: product.features ?? [],
@@ -141,29 +140,4 @@ function mapSanityServiceToCatalog(service: SanityService): CatalogService {
 export async function getCatalogServices(): Promise<CatalogService[]> {
   const services = await getServices();
   return services.map(mapSanityServiceToCatalog);
-}
-
-export async function getAboutPageContent(): Promise<AboutPageContent> {
-  const fallbackAboutPageContent: AboutPageContent = {
-    title: "About Super Solar Fencing",
-    content: "We are industry leaders in designing, engineering, and manufacturing high-performance solar-powered perimeter security solutions for agricultural, industrial, and residential applications.",
-    image: "/placeholder.jpg",
-  };
-
-  const aboutPage = await getAboutPage();
-
-  if (!aboutPage) {
-    return fallbackAboutPageContent;
-  }
-
-  const image =
-    aboutPage.image?.asset?._ref || aboutPage.image?.asset?._id
-      ? urlFor(aboutPage.image).width(1200).fit("max").auto("format").url()
-      : fallbackAboutPageContent.image;
-
-  return {
-    title: aboutPage.title || fallbackAboutPageContent.title,
-    content: aboutPage.content || fallbackAboutPageContent.content,
-    image,
-  };
 }

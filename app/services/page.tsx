@@ -99,13 +99,13 @@ export default async function ServicesPage() {
 
   return (
     <main className="bg-[#F5F5F5] min-h-screen">
-      <section className="bg-white border-b border-slate-200 pt-6 md:pt-10 pb-8">
+      <section className="bg-white border-b border-slate-200 pt-5 sm:pt-6 md:pt-10 pb-6 sm:pb-8">
         <div className="max-w-7xl mx-auto px-4 md:px-8">
-          <div className="flex items-center justify-between mb-5 gap-4">
-            <h1 className="text-3xl md:text-4xl font-extrabold text-[#2C2C2A] tracking-tight">
+          <div className="flex items-center justify-between mb-4 sm:mb-5 gap-3 sm:gap-4">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#2C2C2A] tracking-tight">
               Our Services
             </h1>
-            <span className="text-sm font-semibold text-slate-500 hidden md:block">
+            <span className="text-xs sm:text-sm font-semibold text-slate-500 hidden sm:block">
               Choose a service to jump
             </span>
           </div>
@@ -115,18 +115,18 @@ export default async function ServicesPage() {
       </section>
 
       {/* Projects / Works done section */}
-      <div className="py-16 bg-white">
-        <div className="text-center max-w-2xl mx-auto mb-16 px-4">
+      <div className="py-10 sm:py-14 md:py-16 bg-white">
+        <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-12 md:mb-16 px-4">
           <span className="text-[#639922] font-bold text-[13px] tracking-widest uppercase mb-4 block">Our Works</span>
-          <h2 className="text-[36px] md:text-4xl font-extrabold text-[#2C2C2A] leading-[1.15] tracking-tight">
+          <h2 className="text-[28px] sm:text-[32px] md:text-4xl font-extrabold text-[#2C2C2A] leading-[1.15] tracking-tight">
             Clients & Projects Completed
           </h2>
         </div>
         
         {/* Gallery for Works (Always visible name on mobile, hover on desktop) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-4 md:px-8 max-w-7xl mx-auto">
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6 px-4 md:px-8 max-w-7xl mx-auto">
           {displayProjects.map(project => (
-            <div key={project.id} className="group relative w-full h-[300px] rounded-xl overflow-hidden shadow-md cursor-pointer">
+            <div key={project.id} className="group relative w-full h-[180px] sm:h-[240px] md:h-[300px] rounded-none overflow-hidden shadow-md cursor-pointer">
               <Image 
                 src={project.image} 
                 alt={project.title} 
@@ -136,8 +136,8 @@ export default async function ServicesPage() {
               {/* Overlay: permanent on mobile, hover on desktop */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300"></div>
               
-              <div className="absolute bottom-0 left-0 w-full p-6 md:translate-y-4 md:group-hover:translate-y-0 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all duration-300">
-                <h4 className="text-white text-xl font-bold">{project.title}</h4>
+              <div className="absolute bottom-0 left-0 w-full p-3 sm:p-6 md:translate-y-4 md:group-hover:translate-y-0 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all duration-300">
+                <h4 className="text-white text-sm sm:text-lg md:text-xl font-bold leading-tight line-clamp-2">{project.title}</h4>
               </div>
             </div>
           ))}

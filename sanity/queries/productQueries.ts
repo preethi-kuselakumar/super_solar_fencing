@@ -15,7 +15,8 @@ const productProjection = `
   category->{
     _id,
     title,
-    "slug": slug.current
+    "slug": slug.current,
+    shortDescription
   },
   mainImage{
     alt,
